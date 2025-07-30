@@ -10,7 +10,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage janela) throws Exception {
-        Parent raiz = FXMLLoader.load(getClass().getResource("tela.fxml"));
+        Parent raiz = FXMLLoader.load(getClass().getResource("telaEntrada.fxml"));
         janela.setScene(new Scene(raiz));
         janela.setTitle("Menu inicial");
         janela.show();
