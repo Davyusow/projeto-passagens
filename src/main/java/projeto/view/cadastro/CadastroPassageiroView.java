@@ -9,7 +9,7 @@ import projeto.view.TelaEntradaView;
 public class CadastroPassageiroView {
     public static Parent load() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-            TelaEntradaView.class.getResource("CadastroPassageiro.fxml"));
+            TelaEntradaView.class.getResource("cadastro/CadastroPassageiro.fxml"));
         return loader.load();
     }
 }

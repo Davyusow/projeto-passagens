@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.controller.TelaInicialController">
    <children>
       <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #2479aa;" AnchorPane.bottomAnchor="336.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +18,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="contentArea" layoutY="62.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+      <AnchorPane fx:id="conteudo" layoutY="62.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
          <children>
             <AnchorPane layoutY="37.0" prefHeight="81.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
@@ -34,10 +34,10 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button layoutX="301.0" layoutY="210.0" mnemonicParsing="false" text="Comprar Passagens" />
-            <Button layoutX="42.0" layoutY="210.0" mnemonicParsing="false" text="Cadastrar Voo" />
-            <Button alignment="CENTER" layoutX="152.0" layoutY="210.0" mnemonicParsing="false" text="Cadastrar Passageiro" />
-            <Button layoutX="441.0" layoutY="210.0" mnemonicParsing="false" text="Visualizar Resesvas" />
+            <Button fx:id="btCadastroViagens" layoutX="301.0" layoutY="210.0" mnemonicParsing="false" text="Comprar Passagens" />
+            <Button fx:id="btCadastroVoo" layoutX="42.0" layoutY="210.0" mnemonicParsing="false" onAction="#gerenciarVoos" text="Gerenciar Voos" />
+            <Button fx:id="btCadastroPassageiro" alignment="CENTER" layoutX="152.0" layoutY="210.0" mnemonicParsing="false" onAction="#gerenciarPassageiro" text="Gerenciar Passageiros" />
+            <Button fx:id="btVisualizarReservas" layoutX="441.0" layoutY="210.0" mnemonicParsing="false" onAction="#visualizarReservas" text="Visualizar Reservas" />
          </children>
       </AnchorPane>
    </children>
