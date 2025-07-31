@@ -1,10 +1,10 @@
-package projeto.view.cadastros;
+package projeto.controller.cadastros;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class CadastroVoo {
+public class CadastroVooController {
 
     @FXML
     private TextField campoOrigem;

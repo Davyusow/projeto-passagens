@@ -1,9 +1,9 @@
-package projeto.view.cadastros;
+package projeto.controller.cadastros;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class CadastroPassageiro {
+public class CadastroPassageiroController {
 
     @FXML
     private TextField campoNome;

@@ -1,4 +1,4 @@
-package projeto.view;
+package projeto.controller;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -8,7 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 
-public class CadastrarVoo {
+public class CadastrarVooController {
 
 //    @FXML
 //    private TableView<Voo> tabelaViagens;
