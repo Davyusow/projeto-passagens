@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.view.SelectPassageiroReservas">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.view.SelectPassageiroReservas">
     <children>
         <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #2479aa;" AnchorPane.bottomAnchor="336.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ImageView fitHeight="60.0" fitWidth="217.0" layoutX="192.0" layoutY="-1.0" pickOnBounds="true">
                     <image>
-                        <Image url="@../imagens/AirGate.png" />
+                        <Image url="@../../imagens/AirGate.png" />
                     </image>
                 </ImageView>
             </children>

@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class SelectPassagemReservasView {
-    public static Parent load() throws IOException {
+
+    @SuppressWarnings("exports")
+    public static Parent carregar() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-            TelaEntradaView.class.getResource("SelectPassagemReservas.fxml"));
+                TelaEntradaView.class.getResource("SelectPassagemReservas.fxml"));
         return loader.load();
     }
+
 }

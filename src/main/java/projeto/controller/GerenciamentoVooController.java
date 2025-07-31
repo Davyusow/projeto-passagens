@@ -1,14 +1,14 @@
 package projeto.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.Node;
+import projeto.view.TelaEntradaView;
+import projeto.view.cadastro.CadastroVooView;
 
-import java.time.LocalDate;
+import java.io.IOException;
 
-public class CadastrarVooController {
+public class GerenciamentoVooController extends FuncoesComunsController {
 
 //    @FXML
 //    private TableView<Voo> tabelaViagens;
@@ -39,8 +39,8 @@ public class CadastrarVooController {
 //    }
 
     @FXML
-    void handleAdicionarVoo(ActionEvent event){
-//logica do codigo
+    void handleAdicionarVoo(ActionEvent event) throws IOException{
+        abrirPopup(CadastroVooView.carregar(),"Cadastro de Passageiro", ((Node) event.getSource()).getScene().getWindow());
     }
 
 //    @FXML
@@ -65,7 +65,7 @@ public class CadastrarVooController {
 //    }
 
     @FXML
-    void handleCancelar(ActionEvent event){
-//logica do codigo
+    void handleCancelar(ActionEvent event) throws IOException{
+        trocarTela(event, TelaEntradaView.carregar(), "Menu inicial");        
     }
 }

@@ -3,3 +3,4 @@
 /workspace.xml
 # Caminho dependente do ambiente para o diretório base do Maven
 /mavenHomeManager.xml
+../target
