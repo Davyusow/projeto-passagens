@@ -3,11 +3,9 @@ package projeto.controller;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,6 +13,7 @@ import javafx.stage.Window;
 
 public abstract class FuncoesComunsController {
     
+    @SuppressWarnings("exports") //é só pro compilador parar de reclamar
     public void trocarTela(ActionEvent evento, Parent arquivoFXML, String titulo) {
         try {
             Parent page = arquivoFXML;
@@ -28,7 +27,8 @@ public abstract class FuncoesComunsController {
             System.err.println("--- FIM DO ERRO ---");
         }
     }
-
+    
+    @SuppressWarnings("exports")
     public void trocarAba(Pane pane, Parent arquivoFXML) {
         try {
             Parent root = arquivoFXML;
@@ -40,6 +40,7 @@ public abstract class FuncoesComunsController {
         }
     }
 
+    @SuppressWarnings("exports")
     public void abrirPopup(Parent arquivoFXML, String titulo, Window janelaPai) throws IOException {
         Parent root = arquivoFXML;
         Stage popupStage = new Stage();
@@ -50,6 +51,7 @@ public abstract class FuncoesComunsController {
         popupStage.showAndWait();
     }
 
+    @SuppressWarnings("exports")
     public void fecharPopup(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

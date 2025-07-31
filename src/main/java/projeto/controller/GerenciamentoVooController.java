@@ -1,17 +1,12 @@
 package projeto.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.view.TelaEntradaView;
-import projeto.view.cadastro.CadastroPassageiroView;
 import projeto.view.cadastro.CadastroVooView;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class GerenciamentoVooController extends FuncoesComunsController {
 
