@@ -3,9 +3,12 @@ package projeto.controller;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import projeto.view.TelaEntradaView;
+import projeto.view.cadastro.CadastroPassageiroView;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -41,8 +44,8 @@ public class GerenciamentoPassageiroController extends FuncoesComunsController {
 //    }
 
     @FXML
-    void handleAdicionarPassageiro(ActionEvent event){
-//logica do codigo
+    void handleAdicionarPassageiro(ActionEvent event) throws IOException{
+        abrirPopup(CadastroPassageiroView.carregar(),"Cadastro de Passageiro", ((Node) event.getSource()).getScene().getWindow());
     }
 
 //    @FXML
@@ -68,7 +71,7 @@ public class GerenciamentoPassageiroController extends FuncoesComunsController {
 
     @FXML
     void handleCancelar(ActionEvent event) throws IOException{
-        trocarTela(event, TelaEntradaView.load(), "Menu inicial");        
+        trocarTela(event, TelaEntradaView.carregar(), "Menu inicial");        
     }
 
 }

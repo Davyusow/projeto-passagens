@@ -14,17 +14,17 @@ public class TelaEntradaController extends FuncoesComunsController {
 
     @FXML
     public void gerenciarPassageiro(ActionEvent evento) throws IOException{
-        trocarTela(evento, GerenciamentoPassageiroView.load(), "Gerenciamento de Passageiro");
+        trocarTela(evento, GerenciamentoPassageiroView.carregar(), "Gerenciamento de Passageiro");
     }
     
     @FXML
     public void gerenciarVoos(ActionEvent evento) throws IOException{
-        trocarTela(evento, GerenciamentoVooView.load(), "Gerenciamento de voo");
+        trocarTela(evento, GerenciamentoVooView.carregar(), "Gerenciamento de voo");
     }
 
     @FXML
     public void visualizarReservas(ActionEvent evento) throws IOException{
-        trocarTela(evento, SelectPassagemReservasView.load(), "Visualização das Reservas");
+        trocarTela(evento, SelectPassagemReservasView.carregar(), "Visualização das Reservas");
     }
 
 }

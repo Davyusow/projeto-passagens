@@ -10,6 +10,6 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
 
     @FXML
     public void cancelar(ActionEvent evento) throws IOException{
-        trocarTela(evento, TelaEntradaView.load(), "Menu Inicial");
+        trocarTela(evento, TelaEntradaView.carregar(), "Menu Inicial");
     }
 }

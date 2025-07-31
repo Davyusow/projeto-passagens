@@ -10,7 +10,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage janela) throws Exception {
-        Parent raiz = TelaEntradaView.load();
+        Parent raiz = TelaEntradaView.carregar();
         janela.setScene(new Scene(raiz));
         janela.setTitle("Menu inicial");
         janela.show();

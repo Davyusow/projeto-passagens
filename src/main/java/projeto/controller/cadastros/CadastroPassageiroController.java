@@ -1,9 +1,11 @@
 package projeto.controller.cadastros;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import projeto.controller.FuncoesComunsController;
 
-public class CadastroPassageiroController {
+public class CadastroPassageiroController extends FuncoesComunsController {
 
     @FXML
     private TextField campoNome;
@@ -12,4 +14,9 @@ public class CadastroPassageiroController {
     @FXML
     private TextField campoTelefone;
 
+
+    @FXML
+    public void cancelar(ActionEvent evento){
+        fecharPopup(evento);
+    }
 }
