@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -28,7 +29,7 @@ public abstract class FuncoesComunsController {
         }
     }
 
-    public void trocarAba(AnchorPane pane, Parent arquivoFXML) {
+    public void trocarAba(Pane pane, Parent arquivoFXML) {
         try {
             Parent root = arquivoFXML;
             pane.getChildren().setAll(root);

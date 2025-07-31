@@ -5,10 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import projeto.view.TelaEntradaView;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
-public class CadastrarVooController {
+public class GerenciamentoVooController extends FuncoesComunsController {
 
 //    @FXML
 //    private TableView<Voo> tabelaViagens;
@@ -65,7 +67,7 @@ public class CadastrarVooController {
 //    }
 
     @FXML
-    void handleCancelar(ActionEvent event){
-//logica do codigo
+    void handleCancelar(ActionEvent event) throws IOException{
+        trocarTela(event, TelaEntradaView.load(), "Menu inicial");        
     }
 }

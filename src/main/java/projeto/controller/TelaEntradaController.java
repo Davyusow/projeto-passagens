@@ -10,7 +10,7 @@ import projeto.view.SelectPassageiroReservasView;
 import projeto.view.SelectPassagemReservasView;
 
 
-public class TelaInicialController extends FuncoesComunsController {
+public class TelaEntradaController extends FuncoesComunsController {
 
     @FXML
     public void gerenciarPassageiro(ActionEvent evento) throws IOException{
