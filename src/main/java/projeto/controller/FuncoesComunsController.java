@@ -14,9 +14,9 @@ import javafx.stage.Window;
 
 public abstract class FuncoesComunsController {
     
-    public void trocarTela(ActionEvent evento, String arquivoFXML, String titulo) {
+    public void trocarTela(ActionEvent evento, Parent arquivoFXML, String titulo) {
         try {
-            Parent page = FXMLLoader.load(getClass().getResource(arquivoFXML));
+            Parent page = arquivoFXML;
             Stage janela = (Stage) ((Node) evento.getSource()).getScene().getWindow();
             Scene aba = new Scene(page);
             janela.setTitle(titulo);
@@ -28,19 +28,19 @@ public abstract class FuncoesComunsController {
         }
     }
 
-    public void trocarAba(AnchorPane pane, String arquivoFXML) {
+    public void trocarAba(AnchorPane pane, Parent arquivoFXML) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(arquivoFXML));
+            Parent root = arquivoFXML;
             pane.getChildren().setAll(root);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("\n--- OCORREU UM ERRO AO CARREGAR A TELA ---");
             e.printStackTrace();
             System.err.println("--- FIM DO ERRO ---");
         }
     }
 
-    public void abrirPopup(String fxmlPath, String titulo, Window janelaPai) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    public void abrirPopup(Parent arquivoFXML, String titulo, Window janelaPai) throws IOException {
+        Parent root = arquivoFXML;
         Stage popupStage = new Stage();
         popupStage.setTitle(titulo);
         popupStage.setScene(new Scene(root));

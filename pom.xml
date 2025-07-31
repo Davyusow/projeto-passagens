@@ -39,7 +39,8 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>projeto/projeto.App</mainClass>
+                            <mainClass>projeto.main</mainClass>
+                            <modulePath>--module-path</modulePath>
                         </configuration>
                     </execution>
                 </executions>
