@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.DAO.PassageiroDAO;
 import projeto.models.Passageiro;
 
 public class RepositorioPassageiros {
@@ -36,22 +37,22 @@ public class RepositorioPassageiros {
 		passageiros.add(passageiro);
 	}
 
-	public int procurarPassageiro(int id) {
+	public Passageiro procurarPassageiro(int id) {
 		for (Passageiro p : passageiros) {
 			if (p.getId() == id) {
-				return p.getId();
+				return p;
 			}
 		}
-		return -1;
+		return null;
 	}
 	
 	public boolean editarPassageiro(Passageiro passageiro) {
-		int busca = procurarPassageiro(passageiro.getId());
-		if (busca == -1) {
+		Passageiro busca = procurarPassageiro(passageiro.getId());
+		if (busca == null) {
 			return false;
 		}
 		
-		Passageiro passageiroExistente = passageiros.get(busca);
+		Passageiro passageiroExistente = passageiros.get(passageiro.getId());
 		passageiroExistente.setNome(passageiro.getNome());;
 		passageiroExistente.setCpf(passageiro.getCpf());
 		passageiroExistente.setEmail(passageiro.getEmail());
@@ -60,8 +61,8 @@ public class RepositorioPassageiros {
 	}
 	
 	public boolean removerPassageiro(Passageiro passageiro) {
-		int busca = procurarPassageiro(passageiro.getId());
-		if (busca == -1) {
+		Passageiro busca = procurarPassageiro(passageiro.getId());
+		if (busca == null) {
 			return false;
 		}
 		
