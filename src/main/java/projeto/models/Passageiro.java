@@ -67,11 +67,14 @@ public class Passageiro {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Passageiro that = (Passageiro) o;
-        return Objects.equals(nome, that.nome) && Objects.equals(cpf, that.cpf) && Objects.equals(email, that.email);
+        return Objects.equals(id, that.id) &&
+        		Objects.equals(nome, that.nome) &&
+        		Objects.equals(cpf, that.cpf) &&
+        		Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, cpf, email);
+        return Objects.hash(id, nome, cpf, email);
     }
 }

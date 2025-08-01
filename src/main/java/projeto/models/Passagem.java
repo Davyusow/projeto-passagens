@@ -2,15 +2,31 @@ package projeto.models;
 
 import java.util.Objects;
 
+import projeto.models.Voo.Voo;
+
 public class Passagem {
+	
+	private int id;
     private Passageiro passageiro;
     private Voo voo;
     private String assento;
 
-    public Passagem(Passageiro passageiro, Voo voo, String assento) {
-        this.passageiro = passageiro;
+    public Passagem(int id, Passageiro passageiro, Voo voo, String assento) {
+        this.id = id;
+    	this.passageiro = passageiro;
         this.voo = voo;
         this.assento = assento;
+    }
+    
+    public Passagem() {
+    }
+    
+    public int getId() {
+    	return id;
+    }
+    
+    public void setId(int id) {
+    	this.id = id;
     }
 
     public Passageiro getPassageiro() {

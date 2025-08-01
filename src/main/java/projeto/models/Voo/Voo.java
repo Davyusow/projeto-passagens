@@ -1,23 +1,28 @@
-package projeto.models;
+package projeto.models.Voo;
+
 import java.time.*;
 import java.util.Objects;
 
-abstract class Voo {
-    protected String Codigo;
-    protected LocalDateTime HorarioEmbarque;
-    protected LocalDateTime HorarioChegadaEstimada;
-    protected Integer QtdPassageiros;
-    String LocalEmbarque;
-    String LocalChegada;
+public abstract class Voo {
+	
+	private int id;
+    private String Codigo;
+    private LocalDateTime HorarioEmbarque;
+    private LocalDateTime HorarioChegadaEstimada;
+    private Integer QtdPassageiros;
+    private String LocalEmbarque;
+    private String LocalChegada;
 
-    public Voo(String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String localEmbarque, String localChegada) {
-        this.Codigo = codigo;
+    public Voo(int id, String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String localEmbarque, String localChegada) {
+        this.id = id;
+    	this.Codigo = codigo;
         this.HorarioEmbarque = horarioEmbarque;
         this.HorarioChegadaEstimada = horarioChegadaEstimada;
         this.QtdPassageiros = qtdPassageiros;
         this.LocalEmbarque = localEmbarque;
         this.LocalChegada = localChegada;
     }
+    
     public Voo() {
         Codigo = "0000";
         HorarioEmbarque = LocalDateTime.now();
@@ -29,6 +34,14 @@ abstract class Voo {
     }
 
     public abstract double calcularPreco();
+    
+    public int getId() {
+    	return id;
+    }
+    
+    public void setId(int id) {
+    	this.id = id;
+    }
 
     public String getCodigo() {
         return Codigo;
@@ -77,26 +90,6 @@ abstract class Voo {
     public void setLocalChegada(String localChegada) {
         LocalChegada = localChegada;
     }
-abstract class VooNacional extends Voo {
-    public VooNacional(String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String localEmbarque, String localChegada) {
-        super(codigo, horarioEmbarque, horarioChegadaEstimada, qtdPassageiros, localEmbarque, localChegada);
-    }
-
-    @Override
-    public double calcularPreco() {
-        return 500;
-    }
-}
-abstract class VooInternacional extends Voo {
-    public VooInternacional(String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String LocalEmbarque, String LocalChegada) {
-        super(codigo, horarioEmbarque, horarioChegadaEstimada, qtdPassageiros, LocalEmbarque, LocalChegada);
-    }
-
-    @Override
-    public double calcularPreco() {
-        return 1000;
-    }
-}
 
     @Override
     public String toString() {
@@ -114,7 +107,13 @@ abstract class VooInternacional extends Voo {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Voo voo = (Voo) o;
-        return Objects.equals(Codigo, voo.Codigo) && Objects.equals(HorarioEmbarque, voo.HorarioEmbarque) && Objects.equals(HorarioChegadaEstimada, voo.HorarioChegadaEstimada) && Objects.equals(QtdPassageiros, voo.QtdPassageiros) && Objects.equals(LocalEmbarque, voo.LocalEmbarque) && Objects.equals(LocalChegada, voo.LocalChegada);
+        return Objects.equals
+        		Objects.equals(Codigo, voo.Codigo) &&
+        		Objects.equals(HorarioEmbarque, voo.HorarioEmbarque) &&
+        		Objects.equals(HorarioChegadaEstimada, voo.HorarioChegadaEstimada) &&
+        		Objects.equals(QtdPassageiros, voo.QtdPassageiros) &&
+        		Objects.equals(LocalEmbarque, voo.LocalEmbarque) &&
+        		Objects.equals(LocalChegada, voo.LocalChegada);
     }
 
     @Override
