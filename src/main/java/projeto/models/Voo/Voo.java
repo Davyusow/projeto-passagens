@@ -94,6 +94,7 @@ public abstract class Voo {
     @Override
     public String toString() {
         return "Voo{" +
+        		"id='" + id + '\'' +
                 "Codigo='" + Codigo + '\'' +
                 ", HorarioEmbarque=" + HorarioEmbarque +
                 ", HorarioChegadaEstimada=" + HorarioChegadaEstimada +
@@ -107,7 +108,7 @@ public abstract class Voo {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Voo voo = (Voo) o;
-        return Objects.equals
+        return Objects.equals(id, voo.id) &&
         		Objects.equals(Codigo, voo.Codigo) &&
         		Objects.equals(HorarioEmbarque, voo.HorarioEmbarque) &&
         		Objects.equals(HorarioChegadaEstimada, voo.HorarioChegadaEstimada) &&
@@ -118,6 +119,6 @@ public abstract class Voo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Codigo, HorarioEmbarque, HorarioChegadaEstimada, QtdPassageiros, LocalEmbarque, LocalChegada);
+        return Objects.hash(id, Codigo, HorarioEmbarque, HorarioChegadaEstimada, QtdPassageiros, LocalEmbarque, LocalChegada);
     }
 }

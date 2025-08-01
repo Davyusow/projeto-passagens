@@ -1,4 +1,4 @@
-package repos;
+package projeto.repos;
 
 public class RepositorioPassagens {
 

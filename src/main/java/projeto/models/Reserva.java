@@ -1,5 +1,7 @@
 package projeto.models;
 
+import java.util.Objects;
+
 public class Reserva {
 	
 	private int id;
@@ -46,5 +48,18 @@ public class Reserva {
 		this.idVoo = idVoo;
 	}
     
-    
+	@Override
+	public String toString() {
+		return "";
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return 0;
+	}
 }

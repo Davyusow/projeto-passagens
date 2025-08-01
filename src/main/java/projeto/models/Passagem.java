@@ -55,7 +55,8 @@ public class Passagem {
 
     @Override
     public String toString() {
-        return "Passagem{" +
+        return "Passagem {" +
+        		"id='" + id + '\'' + 
                 "passageiro=" + passageiro +
                 ", voo=" + voo +
                 ", assento='" + assento + '\'' +
@@ -66,11 +67,14 @@ public class Passagem {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Passagem passagem = (Passagem) o;
-        return Objects.equals(passageiro, passagem.passageiro) && Objects.equals(voo, passagem.voo) && Objects.equals(assento, passagem.assento);
+        return Objects.equals(id, passagem.id) &&
+        		Objects.equals(passageiro, passagem.passageiro) &&
+        		Objects.equals(voo, passagem.voo) &&
+        		Objects.equals(assento, passagem.assento);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(passageiro, voo, assento);
+        return Objects.hash(id, passageiro, voo, assento);
     }
 }

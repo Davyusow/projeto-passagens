@@ -56,7 +56,8 @@ public class Passageiro {
 
     @Override
     public String toString() {
-        return "Passageiro{" +
+        return "Passageiro {" +
+        		"id='" + id + '\'' +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
@@ -66,11 +67,11 @@ public class Passageiro {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Passageiro that = (Passageiro) o;
-        return Objects.equals(id, that.id) &&
-        		Objects.equals(nome, that.nome) &&
-        		Objects.equals(cpf, that.cpf) &&
-        		Objects.equals(email, that.email);
+        Passageiro passageiro = (Passageiro) o;
+        return Objects.equals(id, passageiro.id) &&
+        		Objects.equals(nome, passageiro.nome) &&
+        		Objects.equals(cpf, passageiro.cpf) &&
+        		Objects.equals(email, passageiro.email);
     }
 
     @Override

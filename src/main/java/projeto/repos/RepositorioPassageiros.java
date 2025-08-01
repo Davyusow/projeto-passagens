@@ -1,4 +1,4 @@
-package repos;
+package projeto.repos;
 
 import java.util.ArrayList;
 import java.util.List;
