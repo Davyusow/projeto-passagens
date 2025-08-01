@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import projeto.view.GerenciamentoPassageiroView;
 import projeto.view.GerenciamentoVooView;
+import projeto.view.SelectPassageiroPassagemView;
 import projeto.view.SelectPassagemReservasView;
 
 public class TelaEntradaController extends FuncoesComunsController {
@@ -13,7 +14,7 @@ public class TelaEntradaController extends FuncoesComunsController {
     @FXML
     @SuppressWarnings("exports")
     public void gerenciarPassageiro(ActionEvent evento) throws IOException {
-        trocarTela(evento, GerenciamentoPassageiroView.carregar(), "Gerenciamento de Passageiro");
+        trocarTela(evento, GerenciamentoPassageiroView.carregar(), "Gerenciamento de Passageiros");
     }
 
     @FXML
@@ -28,4 +29,9 @@ public class TelaEntradaController extends FuncoesComunsController {
         trocarTela(evento, SelectPassagemReservasView.carregar(), "Visualização das Reservas");
     }
 
+    @FXML
+    @SuppressWarnings("exports")
+    public void comprarPassagens(ActionEvent evento) throws IOException {
+        trocarTela(evento, SelectPassageiroPassagemView.carregar(), "Comprar Passagens");
+    }
 }

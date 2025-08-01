@@ -9,8 +9,7 @@ public class Passageiro {
     private String cpf;
     private String email;
 
-    public Passageiro(int id, String nome, String cpf, String email) {
-    	this.id = id; 
+    public Passageiro(String nome, String cpf, String email) {
     	this.nome = nome;
         this.cpf = cpf;
         this.email = email;
