@@ -18,7 +18,7 @@ abstract class Voo {
         this.LocalEmbarque = localEmbarque;
         this.LocalChegada = localChegada;
     }
-    public Voo(){
+    public Voo() {
         Codigo = "0000";
         HorarioEmbarque = LocalDateTime.now();
         HorarioChegadaEstimada = HorarioEmbarque.plusHours(5);

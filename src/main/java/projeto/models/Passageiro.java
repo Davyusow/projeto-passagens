@@ -3,20 +3,31 @@ package projeto.models;
 import java.util.Objects;
 
 public class Passageiro {
+	
+	private int id;
     private String nome;
     private String cpf;
     private String email;
 
-    public Passageiro(String nome, String cpf, String email) {
-        this.nome = nome;
+    public Passageiro(int id, String nome, String cpf, String email) {
+    	this.id = id; 
+    	this.nome = nome;
         this.cpf = cpf;
         this.email = email;
     }
 
     public Passageiro() {
-    this.nome = "";
-    this.cpf = "0";
-    this.email = "@";
+    	this.nome = "";
+    	this.cpf = "0";
+    	this.email = "@";
+    }
+    
+    public int getId() {
+    	return id;
+    }
+    
+    public void setId(int id) {
+    	this.id = id;
     }
 
     public String getNome() {
