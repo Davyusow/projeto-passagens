@@ -14,7 +14,7 @@ import javafx.stage.Window;
 
 public abstract class FuncoesComunsController {
     
-    @SuppressWarnings("exports") //é só pro compilador parar de reclamar
+    @SuppressWarnings("exports")
     public void trocarTela(ActionEvent evento, Parent arquivoFXML, String titulo) {
         try {
             Parent page = arquivoFXML;
@@ -56,13 +56,6 @@ public abstract class FuncoesComunsController {
     public void fecharPopup(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-    }
-
-    public void exibirAlerta(Alert.AlertType tipo, String titulo, String conteudo) {
-        Alert alerta = new Alert(tipo);
-        alerta.setHeaderText(titulo);
-        alerta.setContentText(conteudo);
-        alerta.showAndWait();
     }
 
 }

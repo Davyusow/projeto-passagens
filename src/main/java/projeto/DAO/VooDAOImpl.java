@@ -2,7 +2,6 @@ package projeto.DAO;
 
 import java.util.List;
 
-import projeto.models.Passageiro;
 import projeto.models.Voo.Voo;
 import projeto.repos.RepositorioVoos;
 
@@ -27,7 +26,7 @@ public class VooDAOImpl implements VooDAO{
 
     @Override
     public boolean removerVoo(Voo voo) {
-        return removerVoo(voo);
+        return repositorioVoos.removerVoo(voo);
     }
 
     @Override
