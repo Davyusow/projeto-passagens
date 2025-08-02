@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassageiroDAOImpl;
 import projeto.models.Passageiro;
+import projeto.util.Aviso;
 import projeto.view.SelectVooPassagemView;
 import projeto.view.TelaEntradaView;
 
@@ -29,7 +30,7 @@ public class SelectPassageiroPassagemController extends FuncoesComunsController{
     @FXML
     private TableColumn<Passageiro, Integer> colunaId;
 
-    ObjectDAO passageiroDAO = new PassageiroDAOImpl();
+    ObjectDAO<Passageiro> passageiroDAO = new PassageiroDAOImpl();
 
     @FXML
     public void initialize() {
@@ -57,7 +58,13 @@ public class SelectPassageiroPassagemController extends FuncoesComunsController{
 
     @FXML
     void handleAvancar(ActionEvent event) throws IOException {
-        trocarTela(event, SelectVooPassagemView.carregar(), "Seleção do Voo");
+        Passageiro selecionado = tabelaPassageiros.getSelectionModel().getSelectedItem();
+        if(selecionado != null){
+            SelectVooPassagemController.setPassageiro(selecionado);
+            trocarTela(event, SelectVooPassagemView.carregar(), "Seleção do Voo");
+        }else{
+            Aviso.informacao("Atenção", "Nenhum passageiro selecionado");
+        }
     }
     
 }

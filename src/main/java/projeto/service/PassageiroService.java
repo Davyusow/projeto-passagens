@@ -6,7 +6,7 @@ import projeto.models.Passageiro;
 
 public class PassageiroService {
 
-    private final ObjectDAO passageiroDAO = new PassageiroDAOImpl();
+    private final ObjectDAO<Passageiro> passageiroDAO = new PassageiroDAOImpl();
 
     public void cadastrarNovoPassageiro(PassageiroDados dados) throws Exception{
         validarRegrasDeNegocio(dados);

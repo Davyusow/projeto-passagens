@@ -33,4 +33,22 @@ public class VooDAOImpl implements ObjectDAO<Voo> {
     public List<Voo> findAll() {   
         return repositorioVoos.findAll();
     }
+
+    public boolean ocuparAssento(int idVoo, String assento) {
+        Voo voo = procurar(idVoo);
+        if (voo != null) {
+            voo.ocuparAssento(assento);
+            return editar(voo);
+        }
+        return false;
+    }
+    
+    public boolean liberarAssento(int idVoo, String assento) {
+        Voo voo = procurar(idVoo);
+        if (voo != null) {
+            voo.liberarAssento(assento);
+            return editar(voo);
+        }
+        return false;
+    }
 }

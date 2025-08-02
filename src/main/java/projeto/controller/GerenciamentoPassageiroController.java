@@ -29,7 +29,7 @@ public class GerenciamentoPassageiroController extends FuncoesComunsController {
     @FXML
     private TableColumn<Passageiro, Integer> colunaId;
 
-    ObjectDAO passageiroDAO = new PassageiroDAOImpl();
+    ObjectDAO<Passageiro> passageiroDAO = new PassageiroDAOImpl();
 
     @FXML
     public void initialize() {

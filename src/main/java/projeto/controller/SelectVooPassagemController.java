@@ -13,7 +13,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.VooDAOImpl;
+import projeto.models.Passageiro;
 import projeto.models.Voo.Voo;
+import projeto.view.SelectAssentoPassagemView;
 import projeto.view.TelaEntradaView;
 
 public class SelectVooPassagemController extends FuncoesComunsController {
@@ -29,7 +31,12 @@ public class SelectVooPassagemController extends FuncoesComunsController {
     @FXML
     private TableColumn<Voo, Integer> colunaId;
 
-    ObjectDAO vooDAO = new VooDAOImpl();
+    ObjectDAO<Voo> vooDAO = new VooDAOImpl();
+
+    private static Passageiro passageiro;
+    public static void setPassageiro(Passageiro novoPassageiro){
+        passageiro = novoPassageiro;
+    }
 
     @FXML
     public void initialize() {
@@ -49,8 +56,18 @@ public class SelectVooPassagemController extends FuncoesComunsController {
     }
 
     @FXML
-    void handleCancelar(ActionEvent event) throws IOException {
-        trocarTela(event, TelaEntradaView.carregar(), "Menu inicial");
+    public void handleCancelar(ActionEvent evento) throws IOException {
+        trocarTela(evento, TelaEntradaView.carregar(), "Menu inicial");
+    }
+
+    @FXML
+    public void handleAvancar(ActionEvent evento) throws IOException{
+        Voo selecionado = tabelaViagens.getSelectionModel().getSelectedItem();
+        if(selecionado != null){
+            SelectAssentoPassagemController.setPassageiro(passageiro);
+            SelectAssentoPassagemController.setVoo(selecionado);
+        }
+        trocarTela(evento, SelectAssentoPassagemView.carregar(), "Selecione o Assento");
     }
 
 }

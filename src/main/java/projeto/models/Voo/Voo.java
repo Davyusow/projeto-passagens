@@ -1,7 +1,11 @@
 package projeto.models.Voo;
 
 import java.time.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public abstract class Voo {
 	
@@ -10,6 +14,7 @@ public abstract class Voo {
     private LocalDateTime horarioEmbarque;
     private LocalDateTime horarioChegadaEstimada;
     private Integer qtdPassageiros;
+    private Map<String, Boolean> assentosOcupados;
     private String localEmbarque;
     private String localChegada;
 
@@ -20,6 +25,8 @@ public abstract class Voo {
         this.qtdPassageiros = qtdPassageiros;
         this.localEmbarque = localEmbarque;
         this.localChegada = localChegada;
+        this.assentosOcupados = new HashMap<>();
+        inicializarAssentos(qtdPassageiros);
     }
     
     public Voo() {
@@ -29,7 +36,38 @@ public abstract class Voo {
         qtdPassageiros = 1;
         localEmbarque = "";
         localChegada =  "";
+        this.assentosOcupados = new HashMap<>();
+        inicializarAssentos(qtdPassageiros);
+    }
 
+    public boolean isAssentoOcupado(String assento) {
+        return assentosOcupados.getOrDefault(assento, true);
+    }
+
+    private void inicializarAssentos(int capacidade) {
+        for (int i = 1; i <= capacidade; i++) {
+            String assento = String.format("%02d", i);
+            assentosOcupados.put(assento, false);
+        }
+    }
+
+    public void ocuparAssento(String assento) {
+        if (assentosOcupados.containsKey(assento)) {
+            assentosOcupados.put(assento, true);
+        }
+    }
+
+    public void liberarAssento(String assento) {
+        if (assentosOcupados.containsKey(assento)) {
+            assentosOcupados.put(assento, false);
+        }
+    }
+
+    public List<String> getAssentosDisponiveis() {
+        return assentosOcupados.entrySet().stream()
+                .filter(entry -> !entry.getValue())
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     public abstract double calcularPreco();

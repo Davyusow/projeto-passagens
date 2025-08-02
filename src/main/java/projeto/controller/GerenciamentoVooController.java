@@ -31,7 +31,7 @@ public class GerenciamentoVooController extends FuncoesComunsController {
     @FXML
     private TableColumn<Voo, Integer> colunaId;
 
-    ObjectDAO vooDAO = new VooDAOImpl();
+    ObjectDAO<Voo> vooDAO = new VooDAOImpl();
 
     @FXML
     public void initialize() {

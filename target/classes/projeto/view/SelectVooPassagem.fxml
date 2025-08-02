@@ -50,7 +50,7 @@
                     </columnResizePolicy>
                 </TableView>
                 <VBox alignment="CENTER" spacing="10">
-                    <Button mnemonicParsing="false" text="Avançar" />
+                    <Button mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
                     <Button mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar" />
                 </VBox>
             </HBox>

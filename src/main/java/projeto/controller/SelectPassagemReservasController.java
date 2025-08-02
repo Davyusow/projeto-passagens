@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import projeto.DAO.ObjectDAO;
+import projeto.DAO.PassagemDAOImpl;
 import projeto.models.Passagem;
 import projeto.view.TelaEntradaView;
 
@@ -26,7 +28,7 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
     @FXML
     private TableColumn<Passagem, Integer> colunaId;
 
-    //ObjectDAO passagemDAO = new PassagemDAOImpl();
+    ObjectDAO<Passagem> passagemDAO = new PassagemDAOImpl();
 
     @FXML
     public void initialize(){
@@ -40,9 +42,9 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
 
     private void carregarPassagens(){
         tabelaPassagem.getItems().clear();
-        //List<Passagem> passagens = passagemDAO.findAll();
-        //ObservableList<Passagem> observablePassagens = FXCollections.observableArrayList(passagens);
-        //tabelaPassagem.setItems(observablePassagens);
+        List<Passagem> passagens = passagemDAO.findAll();
+        ObservableList<Passagem> observablePassagens = FXCollections.observableArrayList(passagens);
+        tabelaPassagem.setItems(observablePassagens);
     }
 
     @FXML

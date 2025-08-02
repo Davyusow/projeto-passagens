@@ -10,7 +10,7 @@ import projeto.models.Voo.VooNacional;
 
 public class VooService {
     
-    private final ObjectDAO vooDAO = new VooDAOImpl();
+    private final ObjectDAO<Voo> vooDAO = new VooDAOImpl();
 
     public void cadastrarNovoVoo(VooDados dados) throws Exception {
         validarRegrasDeNegocio(dados);
