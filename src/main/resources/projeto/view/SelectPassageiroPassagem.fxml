@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.controller.SelectPassageiroPassagemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.controller.SelectPassageiroPassagemController">
     <children>
         <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #2479aa;" AnchorPane.bottomAnchor="336.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -22,12 +22,12 @@
         </AnchorPane>
         <AnchorPane fx:id="contentArea" layoutY="62.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
             <children>
-                <TableView layoutX="33.0" layoutY="97.0" prefHeight="225.0" prefWidth="428.0">
+                <TableView fx:id="tabelaPassageiros" layoutX="33.0" layoutY="97.0" prefHeight="225.0" prefWidth="428.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="Telefone" />
-                        <TableColumn prefWidth="75.0" text="CPF" />
-                        <TableColumn prefWidth="78.0" text="ID" />
+                        <TableColumn fx:id="colunaNome" prefWidth="75.0" text="Nome" />
+                        <TableColumn fx:id="colunaEmail" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="colunaCpf" prefWidth="75.0" text="CPF" />
+                        <TableColumn fx:id="colunaId" prefWidth="78.0" text="ID" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -51,7 +51,7 @@
                         </Label>
                     </children>
                 </AnchorPane>
-                <Button layoutX="501.0" layoutY="197.0" mnemonicParsing="false" text="Avançar" />
+                <Button layoutX="501.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleAvancar" text="Avançar" />
                 <Button layoutX="499.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar" />
             </children>
         </AnchorPane>

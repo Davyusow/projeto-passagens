@@ -52,7 +52,7 @@
                     </children>
                 </AnchorPane>
                 <Button layoutX="501.0" layoutY="197.0" mnemonicParsing="false" text="Avançar" />
-                <Button layoutX="499.0" layoutY="251.0" mnemonicParsing="false" text="Cancelar" />
+                <Button layoutX="499.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar" />
             </children>
         </AnchorPane>
     </children>

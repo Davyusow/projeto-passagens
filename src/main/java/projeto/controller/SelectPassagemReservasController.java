@@ -13,4 +13,6 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
     public void cancelar(ActionEvent evento) throws IOException{
         trocarTela(evento, TelaEntradaView.carregar(), "Menu Inicial");
     }
+
+    
 }

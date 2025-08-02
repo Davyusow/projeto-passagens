@@ -1,6 +1,5 @@
 package projeto.models;
 
-import java.util.Objects;
 
 public class Reserva {
 	
