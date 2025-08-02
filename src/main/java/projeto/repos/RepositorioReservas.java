@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.ReservaNEncontradaException;
+import projeto.exceptions.VooNEncontradoException;
 import projeto.models.Reserva;
+import projeto.models.Voo.Voo;
 
 public class RepositorioReservas {
 	
@@ -35,33 +38,42 @@ public class RepositorioReservas {
 		reserva.setId(contador.getAndIncrement());
 		reservas.add(reserva);
 	}
-	
-	public int procurarReserva(int id) {
-		for (Reserva r : reservas) {
-			if (r.getId() == id) {
-				return r.getId();
+
+	private Reserva buscarReservaPorId(int id) {
+		for (Reserva reserva : reservas) {
+			if (reserva.getId() == id) {
+				return reserva;
 			}
 		}
-		return -1;
+		return null;
+	}
+
+	public Reserva procurarReserva(int id) throws ReservaNEncontradaException {
+		Reserva reserva = buscarReservaPorId(id);
+		if (reserva == null) {
+			throw new ReservaNEncontradaException("Reserva com ID " + id + " não encontrada");
+		}
+		return reserva;
 	}
 	
-	public boolean editarReserva(Reserva reserva) {
-		int busca = procurarReserva(reserva.getId());
-		if (busca == -1) {
-			return false;
+	public boolean editarReserva(Reserva reserva) throws ReservaNEncontradaException {
+		Reserva busca = buscarReservaPorId(reserva.getId());
+		if (busca == null) {
+			throw new ReservaNEncontradaException("Reserva não encontrada");
 		}
 		
-		Reserva reservaExistente = reservas.get(busca);
+		Reserva reservaExistente = reservas.get(reserva.getId());
 		reservaExistente.setIdPassageiro(reserva.getIdPassageiro());
 		reservaExistente.setIdPassagem(reserva.getIdPassageiro());
 		reservaExistente.setIdVoo(reserva.getIdVoo());
 		return true;
 	}
 
-	public boolean removerReserva(Reserva reserva) {
-		int busca = procurarReserva(reserva.getId());
-		if (busca == -1) {
-			return false;
+	public boolean removerReserva(Reserva reserva) throws ReservaNEncontradaException {
+		Reserva busca = buscarReservaPorId(reserva.getId());
+		if (busca == null) {
+			throw new ReservaNEncontradaException("Reserva não encontrada");
+
 		}
 		
 		reservas.remove(busca);

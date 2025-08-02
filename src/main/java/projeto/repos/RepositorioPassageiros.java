@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.PassageiroNEncontradoException;
+import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passageiro;
+import projeto.models.Passagem;
 
 public class RepositorioPassageiros {
 	
@@ -35,20 +38,27 @@ public class RepositorioPassageiros {
 		passageiro.setId(contador.getAndIncrement());
 		passageiros.add(passageiro);
 	}
-
-	public Passageiro procurarPassageiro(int id) {
-		for (Passageiro p : passageiros) {
-			if (p.getId() == id) {
-				return p;
+	private Passageiro buscarPassageiroPorId(int id){
+		for (Passageiro passageiro : passageiros){
+			if (passageiro.getId() == id) {
+				return passageiro;
 			}
 		}
 		return null;
 	}
+
+	public Passageiro procurarPassageiro(int id) throws PassagemNEncontradaException {
+		Passageiro passageiro = buscarPassageiroPorId(id);
+		if (passageiro == null){
+			throw new PassagemNEncontradaException("Passageiro com ID" + id + "não encontrado");
+		}
+		return passageiro;
+	}
 	
-	public boolean editarPassageiro(Passageiro passageiro) {
+	public boolean editarPassageiro(Passageiro passageiro) throws PassageiroNEncontradoException {
 		Passageiro busca = procurarPassageiro(passageiro.getId());
 		if (busca == null) {
-			return false;
+			throw new PassageiroNEncontradoException("Passageiro n encontrado");
 		}
 		
 		Passageiro passageiroExistente = passageiros.get(passageiro.getId());
@@ -59,10 +69,10 @@ public class RepositorioPassageiros {
 		return true;
 	}
 	
-	public boolean removerPassageiro(Passageiro passageiro) {
-		Passageiro busca = procurarPassageiro(passageiro.getId());
+	public boolean removerPassageiro(Passageiro passageiro) throws PassageiroNEncontradoException {
+		Passageiro busca = buscarPassageiroPorId(passageiro.getId());
 		if (busca == null) {
-			return false;
+			throw new PassageiroNEncontradoException("Passageiro n encontrado");
 		}
 		
 		passageiros.remove(busca);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.VooNEncontradoException;
 import projeto.models.Voo.Voo;
 
 public class RepositorioVoos {
@@ -35,15 +36,27 @@ public class RepositorioVoos {
 		voo.setId(contador.getAndIncrement());
 		voos.add(voo);
 	}
-
-	public Voo procurarVoo(int id) {
-		return voos.get(id);
+	private Voo buscarVooPorId(int id) {
+		for (Voo voo : voos) {
+			if (voo.getId() == id) {
+				return voo;
+			}
+		}
+		return null;
 	}
 
-	public boolean editarVoo(Voo voo) {
-		Voo busca = procurarVoo(voo.getId());
+	public Voo procurarVoo(int id) throws VooNEncontradoException {
+		Voo voo = buscarVooPorId(id);
+		if (voo == null) {
+			throw new VooNEncontradoException("Voo com ID " + id + " não encontrado");
+		}
+		return voo;
+	}
+
+	public boolean editarVoo(Voo voo) throws VooNEncontradoException {
+		Voo busca = buscarVooPorId(voo.getId());
 		if (busca == null) {
-			return false;
+			throw new VooNEncontradoException("Voo não encontrado");
 		}
 		
 		Voo vooExistente = voos.get(voo.getId());
@@ -58,7 +71,7 @@ public class RepositorioVoos {
 	}
 	
 	public boolean removerVoo(Voo voo) {
-		Voo busca = procurarVoo(voo.getId());
+		Voo busca = buscarVooPorId(voo.getId());
 		if (busca == null) {
 			return false;
 		}

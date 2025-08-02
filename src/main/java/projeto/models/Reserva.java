@@ -47,19 +47,29 @@ public class Reserva {
 	public void setIdVoo(int idVoo) {
 		this.idVoo = idVoo;
 	}
-    
+
 	@Override
 	public String toString() {
-		return "";
+		return "Reserva{" +
+				"id=" + id +
+				", idPassageiro=" + idPassageiro +
+				", idPassagem=" + idPassagem +
+				", idVoo=" + idVoo +
+				'}';
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Reserva reserva = (Reserva) o;
+		return id == reserva.id &&
+				idPassageiro == reserva.idPassageiro &&
+				idPassagem == reserva.idPassagem &&
+				idVoo == reserva.idVoo;
 	}
 
 	@Override
 	public int hashCode() {
-		return 0;
+		return Objects.hash(id, idPassageiro, idPassagem, idVoo);
 	}
 }

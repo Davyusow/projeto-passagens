@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passagem;
+import projeto.models.Reserva;
 
 public class RepositorioPassagens {
 	
@@ -35,23 +37,31 @@ public class RepositorioPassagens {
 		passagem.setId(contador.getAndIncrement());
 		passagens.add(passagem);
 	}
-	
-	public int procurarPassagem(int id) {
-		for (Passagem p : passagens) {
-			if (p.getId() == id) {
-				return p.getId();
+
+	private Passagem buscarPassagemPorId(int id){
+		for (Passagem passagem : passagens){
+			if (passagem.getId() == id) {
+				return passagem;
 			}
 		}
-		return -1;
+		return null;
+	}
+
+	public Passagem procurarPassagem(int id) throws PassagemNEncontradaException {
+		Passagem passagem = buscarPassagemPorId(id);
+		if (passagem == null){
+			throw new PassagemNEncontradaException("Passagem com ID" + id + "não encontrada");
+		}
+		return passagem;
 	}
 	
-	public boolean editarPassagem(Passagem passagem) {
-		int busca = procurarPassagem(passagem.getId());
-		if (busca == -1) {
-			return false;
+	public boolean editarPassagem(Passagem passagem) throws PassagemNEncontradaException {
+		Passagem busca = buscarPassagemPorId(passagem.getId());
+		if (busca == null) {
+			throw new PassagemNEncontradaException("Passagem não encontrada");
 		}
 		
-		Passagem passagemExistente = passagens.get(busca);
+		Passagem passagemExistente = passagens.get(passagem.getId());
 		passagemExistente.setPassageiro(passagem.getPassageiro());
 		passagemExistente.setVoo(passagem.getVoo());
 		passagemExistente.setAssento(passagem.getAssento());
@@ -59,10 +69,10 @@ public class RepositorioPassagens {
 		return true;
 	}
 	
-	public boolean removerPassagem(Passagem passagem) {
-		int busca = procurarPassagem(passagem.getId());
-		if (busca == -1) {
-			return false;
+	public boolean removerPassagem(Passagem passagem) throws PassagemNEncontradaException {
+		Passagem busca = buscarPassagemPorId(passagem.getId());
+		if (busca == null) {
+			throw new PassagemNEncontradaException("Passagem não encontrada");
 		}
 		
 		passagens.remove(busca);
