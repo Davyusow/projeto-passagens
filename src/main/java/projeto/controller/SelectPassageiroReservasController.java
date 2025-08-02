@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import projeto.DAO.PassageiroDAO;
+import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassageiroDAOImpl;
 import projeto.models.Passageiro;
 import projeto.view.SelectPassagemReservasView;
@@ -29,7 +29,7 @@ public class SelectPassageiroReservasController extends FuncoesComunsController 
     @FXML
     private TableColumn<Passageiro, Integer> colunaId;
 
-    PassageiroDAO passageiroDAO = new PassageiroDAOImpl();
+    ObjectDAO passageiroDAO = new PassageiroDAOImpl();
 
     @FXML
     public void initialize() {

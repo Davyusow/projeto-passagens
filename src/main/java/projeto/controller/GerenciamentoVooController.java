@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import projeto.DAO.VooDAO;
+import projeto.DAO.ObjectDAO;
 import projeto.DAO.VooDAOImpl;
 import projeto.models.Voo.Voo;
 import projeto.util.Aviso;
@@ -31,7 +31,7 @@ public class GerenciamentoVooController extends FuncoesComunsController {
     @FXML
     private TableColumn<Voo, Integer> colunaId;
 
-    VooDAO vooDAO = new VooDAOImpl();
+    ObjectDAO vooDAO = new VooDAOImpl();
 
     @FXML
     public void initialize() {
@@ -60,7 +60,7 @@ public class GerenciamentoVooController extends FuncoesComunsController {
         Voo selecionado = tabelaViagens.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
             if (Aviso.confirmacao("Confirmação", "Tem certeza que deseja excluir este Voo?")) {
-                vooDAO.removerVoo(selecionado);
+                vooDAO.remover(selecionado);
                 carregarViagens();
             }
         }

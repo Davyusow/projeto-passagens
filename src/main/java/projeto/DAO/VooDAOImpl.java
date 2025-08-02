@@ -5,27 +5,27 @@ import java.util.List;
 import projeto.models.Voo.Voo;
 import projeto.repos.RepositorioVoos;
 
-public class VooDAOImpl implements VooDAO{
+public class VooDAOImpl implements ObjectDAO<Voo>{
 
     private final RepositorioVoos repositorioVoos = RepositorioVoos.getInstance() ;
 
     @Override
-    public void criarVoo(Voo voo) {
+    public void criar(Voo voo) {
         repositorioVoos.criarVoo(voo);
     }
 
     @Override
-    public Voo procurarVoo(int id) {
+    public Voo procurar(int id) {
         return repositorioVoos.procurarVoo(id);
     }
 
     @Override
-    public boolean editarVoo(Voo voo) {
+    public boolean editar(Voo voo) {
         return repositorioVoos.editarVoo(voo);
     }
 
     @Override
-    public boolean removerVoo(Voo voo) {
+    public boolean remover(Voo voo) {
         return repositorioVoos.removerVoo(voo);
     }
 

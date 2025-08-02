@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import projeto.DAO.VooDAO;
+import projeto.DAO.ObjectDAO;
 import projeto.DAO.VooDAOImpl;
 import projeto.models.Voo.Voo;
 import projeto.view.TelaEntradaView;
@@ -29,7 +29,7 @@ public class SelectVooPassagemController extends FuncoesComunsController {
     @FXML
     private TableColumn<Voo, Integer> colunaId;
 
-    VooDAO vooDAO = new VooDAOImpl();
+    ObjectDAO vooDAO = new VooDAOImpl();
 
     @FXML
     public void initialize() {

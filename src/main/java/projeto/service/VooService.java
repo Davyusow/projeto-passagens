@@ -2,7 +2,7 @@ package projeto.service;
 
 import java.time.LocalDateTime;
 
-import projeto.DAO.VooDAO;
+import projeto.DAO.ObjectDAO;
 import projeto.DAO.VooDAOImpl;
 import projeto.models.Voo.Voo;
 import projeto.models.Voo.VooInternacional;
@@ -10,7 +10,7 @@ import projeto.models.Voo.VooNacional;
 
 public class VooService {
     
-    private final VooDAO vooDAO = new VooDAOImpl();
+    private final ObjectDAO vooDAO = new VooDAOImpl();
 
     public void cadastrarNovoVoo(VooDados dados) throws Exception {
         validarRegrasDeNegocio(dados);
@@ -27,7 +27,7 @@ public class VooService {
             novoVoo = new VooNacional(codigoVoo, embarque, chegada, quantidade, dados.origem(), dados.destino());
         }
 
-        vooDAO.criarVoo(novoVoo);
+        vooDAO.criar(novoVoo);
     }
     
     private void validarRegrasDeNegocio(VooDados dados) throws Exception { //aqui acontece os throws 

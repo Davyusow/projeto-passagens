@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import projeto.DAO.PassageiroDAO;
+import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassageiroDAOImpl;
 import projeto.models.Passageiro;
 import projeto.util.Aviso;
@@ -29,7 +29,7 @@ public class GerenciamentoPassageiroController extends FuncoesComunsController {
     @FXML
     private TableColumn<Passageiro, Integer> colunaId;
 
-    PassageiroDAO passageiroDAO = new PassageiroDAOImpl();
+    ObjectDAO passageiroDAO = new PassageiroDAOImpl();
 
     @FXML
     public void initialize() {
@@ -58,7 +58,7 @@ public class GerenciamentoPassageiroController extends FuncoesComunsController {
         Passageiro selecionado = tabelaPassageiros.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
             if (Aviso.confirmacao("Confirmação", "Tem certeza que deseja excluir este passageiro?")) {
-                passageiroDAO.removerPassageiro(selecionado);
+                passageiroDAO.remover(selecionado);
                 carregarPassageiros();
             }
         } else {
