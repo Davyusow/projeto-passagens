@@ -5,23 +5,23 @@ import projeto.repos.RepositorioPassageiros;
 
 import java.util.List;
 
-public class PassageiroDAOImpl implements PassageiroDAO{
+public class PassageiroDAOImpl implements ObjectDAO<Passageiro> {
     private final RepositorioPassageiros repositorio = RepositorioPassageiros.getInstance();
 
-    public void criarPassageiro(Passageiro passageiro){
+    public void criar(Passageiro passageiro){
         repositorio.criarPassageiro(passageiro);
     }
 
-    public Passageiro procurarPassageiro(int id){
+    public Passageiro procurar(int id){
         Passageiro buscado = repositorio.procurarPassageiro(id);
         return buscado;
     }
 
-    public boolean editarPassageiro(Passageiro passageiro){
+    public boolean editar(Passageiro passageiro){
        return false;
     }
 
-    public boolean removerPassageiro(Passageiro passageiro){
+    public boolean remover(Passageiro passageiro){
         boolean existe = repositorio.removerPassageiro(passageiro);
         if(!existe){
             //Exceção: ObjectNonExistentException
