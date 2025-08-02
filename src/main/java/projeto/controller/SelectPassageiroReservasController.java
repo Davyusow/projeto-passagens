@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassageiroDAOImpl;
 import projeto.models.Passageiro;
+import projeto.util.Aviso;
 import projeto.view.SelectPassagemReservasView;
 import projeto.view.TelaEntradaView;
 
@@ -48,18 +49,22 @@ public class SelectPassageiroReservasController extends FuncoesComunsController 
         tabelaPassageiros.setItems(observablePassageiros);
     }
 
-
     @FXML
     @SuppressWarnings("exports")
     public void handleCancelar(ActionEvent evento) throws IOException{
         trocarTela(evento, TelaEntradaView.carregar(), "Menu Inicial");
     }
 
-    @FXML
+     @FXML
     @SuppressWarnings("exports")
-    public void handleAvancar(ActionEvent evento) throws IOException{
-        trocarTela(evento, SelectPassagemReservasView.carregar(), "Reservas de passagem");
+    public void handleAvancar(ActionEvent evento) throws IOException {
+        Passageiro selecionado = tabelaPassageiros.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            SelectPassagemReservasController.setPassageiro(selecionado);
+            trocarTela(evento, SelectPassagemReservasView.carregar(), "Reservas de passagem");
+        } else {
+            Aviso.informacao("Aviso", "Selecione um passageiro para continuar");
+        }
     }
-
 
 }

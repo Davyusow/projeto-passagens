@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import projeto.exceptions.ReservaNEncontradaException;
-import projeto.exceptions.VooNEncontradoException;
 import projeto.models.Reserva;
-import projeto.models.Voo.Voo;
 
 public class RepositorioReservas {
 	

@@ -2,6 +2,7 @@ package projeto.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +13,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassagemDAOImpl;
+import projeto.DAO.ReservaDAOImpl;
+import projeto.models.Passageiro;
 import projeto.models.Passagem;
+import projeto.models.Reserva;
+import projeto.util.Aviso;
 import projeto.view.TelaEntradaView;
 
 public class SelectPassagemReservasController extends FuncoesComunsController {
@@ -29,6 +34,12 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
     private TableColumn<Passagem, Integer> colunaId;
 
     ObjectDAO<Passagem> passagemDAO = new PassagemDAOImpl();
+    private static Passageiro passageiro;
+
+
+    public static void setPassageiro(Passageiro novoPassageiro){
+        passageiro = novoPassageiro;
+    }
 
     @FXML
     public void initialize(){
@@ -40,11 +51,29 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
         carregarPassagens();
     }
 
-    private void carregarPassagens(){
-        tabelaPassagem.getItems().clear();
-        List<Passagem> passagens = passagemDAO.findAll();
-        ObservableList<Passagem> observablePassagens = FXCollections.observableArrayList(passagens);
-        tabelaPassagem.setItems(observablePassagens);
+    private void carregarPassagens() {
+        try {
+            tabelaPassagem.getItems().clear();
+    
+            if (passageiro == null) {
+                Aviso.erro("Erro", "Nenhum passageiro selecionado");
+                return;
+            }
+            
+            ObjectDAO<Reserva> reservaDAO = new ReservaDAOImpl();
+            List<Reserva> reservas = ((ReservaDAOImpl)reservaDAO).findReservaPassageiro(passageiro.getId());
+            
+            List<Passagem> passagens = reservas.stream()
+                .map(reserva -> passagemDAO.procurar(reserva.getIdPassagem()))
+                .filter(passagem -> passagem != null)
+                .collect(Collectors.toList());
+            
+            ObservableList<Passagem> observablePassagens = FXCollections.observableArrayList(passagens);
+            tabelaPassagem.setItems(observablePassagens);
+            
+        } catch (Exception e) {
+            Aviso.erro("Erro", "Falha ao carregar passagens: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -53,5 +82,4 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
         trocarTela(evento, TelaEntradaView.carregar(), "Menu Inicial");
     }
 
-    
 }

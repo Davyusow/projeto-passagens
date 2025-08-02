@@ -15,8 +15,8 @@ public class Passagem {
     private String tipo; //esses dois são para a tabela
     private String destino;
 
-    public Passagem(int id, Passageiro passageiro, Voo voo, String assento) {
-        this.id = id;
+    public Passagem(Passageiro passageiro, Voo voo, String assento) {
+    
     	this.passageiro = passageiro;
         this.voo = voo;
         this.assento = assento;

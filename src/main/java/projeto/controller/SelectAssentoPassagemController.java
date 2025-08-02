@@ -8,9 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.PassagemDAOImpl;
+import projeto.DAO.ReservaDAOImpl;
 import projeto.DAO.VooDAOImpl;
 import projeto.models.Passageiro;
 import projeto.models.Passagem;
+import projeto.models.Reserva;
 import projeto.models.Voo.Voo;
 import projeto.util.Aviso;
 import projeto.view.TelaEntradaView;
@@ -130,9 +132,12 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
             }
             if (Aviso.confirmacao("Confirmação", "Deseja escolher este assento?")) {
                 try {
-                    Passagem passagem = new Passagem(0, passageiroSelecionado, vooSelecionado, assentoSelecionado);
+                    Passagem passagem = new Passagem(passageiroSelecionado, vooSelecionado, assentoSelecionado);
                     ObjectDAO<Passagem> passagemDAO = new PassagemDAOImpl();
+                    ObjectDAO<Reserva> reservDAO = new ReservaDAOImpl();
                     passagemDAO.criar(passagem);
+                    reservDAO.criar(new Reserva(passageiroSelecionado.getId(), passagem.getId(), vooSelecionado.getId()));
+
 
                     VooDAOImpl vooDAO = new VooDAOImpl();
                     if (!vooDAO.ocuparAssento(vooSelecionado.getId(), assentoSelecionado)) {

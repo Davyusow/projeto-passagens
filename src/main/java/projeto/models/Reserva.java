@@ -9,8 +9,7 @@ public class Reserva {
 	private int idPassagem;
 	private int idVoo;
 	
-    public Reserva(int id, int idPassageiro, int idPassagem, int idVoo) {
-    	this.setId(id);
+    public Reserva( int idPassageiro, int idPassagem, int idVoo) {
     	this.setIdPassageiro(idPassageiro);
     	this.setIdPassagem(idPassagem);
     	this.setIdVoo(idVoo);
