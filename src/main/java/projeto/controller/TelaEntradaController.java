@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import projeto.view.GerenciamentoPassageiroView;
 import projeto.view.GerenciamentoVooView;
 import projeto.view.SelectPassageiroPassagemView;
-import projeto.view.SelectPassagemReservasView;
+import projeto.view.SelectPassageiroReservasView;
 
 public class TelaEntradaController extends FuncoesComunsController {
 
@@ -26,7 +26,7 @@ public class TelaEntradaController extends FuncoesComunsController {
     @FXML
     @SuppressWarnings("exports")
     public void visualizarReservas(ActionEvent evento) throws IOException {
-        trocarTela(evento, SelectPassagemReservasView.carregar(), "Visualização das Reservas");
+        trocarTela(evento, SelectPassageiroReservasView.carregar(), "Visualização das Reservas");
     }
 
     @FXML

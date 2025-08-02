@@ -22,12 +22,12 @@
         </AnchorPane>
         <AnchorPane fx:id="contentArea" layoutY="62.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
             <children>
-                <TableView layoutX="33.0" layoutY="97.0" prefHeight="225.0" prefWidth="428.0">
+                <TableView fx:id="tabelaViagens" layoutX="33.0" layoutY="97.0" prefHeight="225.0" prefWidth="428.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Destino" />
-                        <TableColumn prefWidth="75.0" text="Data" />
-                        <TableColumn prefWidth="75.0" text="Tipo do Voo" />
-                        <TableColumn prefWidth="78.0" text="ID" />
+                        <TableColumn fx:id="colunaDestino" prefWidth="75.0" text="Destino" />
+                        <TableColumn fx:id="colunaData" prefWidth="75.0" text="Data" />
+                        <TableColumn fx:id="colunaTipo" prefWidth="75.0" text="Tipo do Voo" />
+                        <TableColumn fx:id="colunaId" prefWidth="78.0" text="ID" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -52,7 +52,7 @@
                     </children>
                 </AnchorPane>
                 <Button layoutX="501.0" layoutY="197.0" mnemonicParsing="false" text="Avançar" />
-                <Button layoutX="499.0" layoutY="251.0" mnemonicParsing="false" text="Cancelar" />
+                <Button layoutX="499.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleCancelar" text="Cancelar" />
             </children>
         </AnchorPane>
     </children>

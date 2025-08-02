@@ -3,6 +3,8 @@ package projeto.models;
 import java.util.Objects;
 
 import projeto.models.Voo.Voo;
+import projeto.models.Voo.VooInternacional;
+import projeto.models.Voo.VooNacional;
 
 public class Passagem {
 	
@@ -10,6 +12,8 @@ public class Passagem {
     private Passageiro passageiro;
     private Voo voo;
     private String assento;
+    private String tipo; //esses dois são para a tabela
+    private String destino;
 
     public Passagem(int id, Passageiro passageiro, Voo voo, String assento) {
         this.id = id;
@@ -52,6 +56,19 @@ public class Passagem {
     public void setAssento(String assento) {
         this.assento = assento;
     }
+
+    public String getTipo(){
+        if(voo instanceof VooInternacional){
+            return ((VooInternacional)voo).getTipo();
+        }else{
+            return ((VooNacional)voo).getTipo();
+        }
+    }
+
+    public String getDestino(){
+        return voo.getLocalChegada();
+    }
+
 
     @Override
     public String toString() {
