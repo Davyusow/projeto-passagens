@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import projeto.models.Reserva;
-import projeto.repos.RepositorioPassageiros;
 import projeto.repos.RepositorioReservas;
 
 public class ReservaDAOImpl implements ObjectDAO<Reserva> {
 	
 	private final RepositorioReservas repositorio = RepositorioReservas.getInstance();
-	private final RepositorioPassageiros repositorioPassageiros = RepositorioPassageiros.getInstance();
 
 	@Override
 	public void criar(Reserva reserva) {

@@ -15,6 +15,7 @@ public class Passagem {
     // private String tipo; //esses dois são para a tabela
     // private String destino;
 
+    @SuppressWarnings("exports")
     public Passagem(Passageiro passageiro, Voo voo, String assento) {
     
     	this.passageiro = passageiro;
@@ -41,10 +42,12 @@ public class Passagem {
         this.passageiro = passageiro;
     }
 
+    @SuppressWarnings("exports")
     public Voo getVoo() {
         return voo;
     }
 
+    @SuppressWarnings("exports")
     public void setVoo(Voo voo) {
         this.voo = voo;
     }

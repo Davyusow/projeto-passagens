@@ -56,11 +56,13 @@ public class SelectVooPassagemController extends FuncoesComunsController {
     }
 
     @FXML
+    @SuppressWarnings("exports")
     public void handleCancelar(ActionEvent evento) throws IOException {
         trocarTela(evento, TelaEntradaView.carregar(), "Menu inicial");
     }
 
     @FXML
+    @SuppressWarnings("exports")
     public void handleAvancar(ActionEvent evento) throws IOException{
         Voo selecionado = tabelaViagens.getSelectionModel().getSelectedItem();
         if(selecionado != null){

@@ -33,6 +33,7 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
     private String assentoSelecionado;
     private AssentoService service = new AssentoService();
 
+    @SuppressWarnings("exports")
     public static void setVoo(Voo voo) {
         vooSelecionado = voo;
     }
@@ -54,6 +55,7 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
         }
     }
 
+    @SuppressWarnings("unused")
     private void carregarAssentos() {
         try {
             gridAssentos.getChildren().clear();
