@@ -39,6 +39,7 @@ public class RepositorioPassageiros {
 		passageiro.setId(contador.getAndIncrement());
 		passageiros.add(passageiro);
 	}
+	
 	private Passageiro buscarPassageiroPorId(int id){
 		for (Passageiro passageiro : passageiros){
 			if (passageiro.getId() == id) {

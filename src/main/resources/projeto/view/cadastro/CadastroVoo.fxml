@@ -1,146 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.controller.cadastros.CadastroVooController">
-    <children>
-        <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #2479aa;" AnchorPane.bottomAnchor="336.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <ImageView fitHeight="60.0" fitWidth="217.0" layoutX="192.0" layoutY="-1.0" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../../imagens/AirGate.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="contentArea" layoutY="62.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
-            <children>
-                <VBox alignment="CENTER" layoutX="16.0" layoutY="84.0" prefHeight="200.0" prefWidth="569.0">
-                    <HBox prefHeight="100.0" prefWidth="200.0">
-                        <children>
-                            <Label text="Partida : ">
-                                <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                </HBox.margin>
-                            </Label>
-                            <TextField fx:id="campoOrigem" prefHeight="25.0" prefWidth="200.0" promptText="Local de partida">
-                                <HBox.margin>
-                                    <Insets top="5.0" />
-                                </HBox.margin>
-                            </TextField>
-                            <Label text="Destino : ">
-                                <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                </HBox.margin>
-                            </Label>
-                     <TextField fx:id="campoDestino" prefHeight="25.0" prefWidth="200.0" promptText="Local de destino">
-                        <HBox.margin>
-                           <Insets top="5.0" />
-                        </HBox.margin>
-                     </TextField>
-                        </children>
-                    </HBox>
-                    <HBox prefHeight="100.0" prefWidth="200.0">
-                        <Label text="Data da Viagem :">
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Label>
-                  <DatePicker fx:id="campoData" prefHeight="24.0" prefWidth="174.0" promptText="Data do embarque">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </DatePicker>
-                        <Label text="Embarque: ">
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Label>
-                        <TextField fx:id="campoHoraEmbarque" prefHeight="25.0" prefWidth="186.0" promptText="Horario do embarque">
-                            <HBox.margin>
-                                <Insets top="5.0" />
-                            </HBox.margin>
-                        </TextField>
-                    </HBox>
-               <HBox prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Label text="Chegada">
-                        <HBox.margin>
-                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                        </HBox.margin>
-                     </Label>
-                     <TextField fx:id="campoHoraChegada" promptText="Horario de chegada">
-                        <HBox.margin>
-                           <Insets top="5.0" />
-                        </HBox.margin>
-                     </TextField>
-                     <Label text="Tipo:">
-                        <HBox.margin>
-                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                        </HBox.margin>
-                     </Label>
-                     <RadioButton fx:id="international" mnemonicParsing="false" text="Internacional">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="tipoVooGroup" />
-                        </toggleGroup>
-                        <HBox.margin>
-                           <Insets left="10.0" top="10.0" />
-                        </HBox.margin>
-                     </RadioButton>
-                     <RadioButton fx:id="nacional" mnemonicParsing="false" text="Nacional" toggleGroup="$tipoVooGroup">
-                        <HBox.margin>
-                           <Insets left="10.0" top="10.0" />
-                        </HBox.margin>
-                     </RadioButton>
-                  </children>
-               </HBox>
-                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                        <Label contentDisplay="CENTER" text="Capacidade :">
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Label>
-                        <TextField fx:id="campoQuant" prefHeight="25.0" prefWidth="223.0" promptText="Capacidade de passageiros">
-                            <HBox.margin>
-                                <Insets top="5.0" />
-                            </HBox.margin>
-                        </TextField>
-                    </HBox>
-                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                        <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="395.0">
-                            <Button mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="83.0" text="Cancelar" />
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="312.0">
-                            <Button fx:id="cadastrar" alignment="CENTER" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="83.0" text="Cadastrar">
-                                <HBox.margin>
-                                    <Insets />
-                                </HBox.margin>
-                            </Button>
-                        </HBox>
-                    </HBox>
-                </VBox>
-            <AnchorPane layoutY="31.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #ADD8E6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Label layoutX="231.0" layoutY="5.0" text="Cadastrar Nova Viagem">
-                     <font>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="projeto.controller.cadastros.CadastroVooController">
+    <top>
+        <VBox alignment="CENTER" style="-fx-background-color: #2479aa;" prefHeight="64.0">
+            <ImageView fitHeight="60.0" fitWidth="217.0" pickOnBounds="true">
+                <image>
+                    <Image url="@../../../imagens/AirGate.png" />
+                </image>
+            </ImageView>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 20;">
+            <HBox alignment="CENTER" style="-fx-background-color: #ADD8E6; -fx-padding: 5;"
+                prefHeight="28.0" maxWidth="Infinity">
+                <Label text="Cadastrar Nova Viagem">
+                    <font>
                         <Font name="Arial" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            </children>
-        </AnchorPane>
-    </children>
-</AnchorPane>
+                    </font>
+                </Label>
+            </HBox>
+            <GridPane alignment="CENTER" hgap="10" vgap="10" style="-fx-padding: 0 20;">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="100" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200" />
+                    <ColumnConstraints hgrow="NEVER" minWidth="100" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200" />
+                </columnConstraints>
+                <Label text="Partida:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="campoOrigem" promptText="Local de partida" GridPane.rowIndex="0"
+                    GridPane.columnIndex="1" />
+                <Label text="Destino:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <TextField fx:id="campoDestino" promptText="Local de destino" GridPane.rowIndex="0"
+                    GridPane.columnIndex="3" />
+                <Label text="Data da Viagem:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <DatePicker fx:id="campoData" promptText="Data do embarque" GridPane.rowIndex="1"
+                    GridPane.columnIndex="1" />
+                <Label text="Embarque:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <TextField fx:id="campoHoraEmbarque" promptText="Horário do embarque"
+                    GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                <Label text="Chegada:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <TextField fx:id="campoHoraChegada" promptText="Horário de chegada"
+                    GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="Tipo:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="3">
+                    <RadioButton fx:id="international" text="Internacional"
+                        toggleGroup="$tipoVooGroup" />
+                    <RadioButton fx:id="nacional" text="Nacional" toggleGroup="$tipoVooGroup"
+                        selected="true" />
+                </HBox>
+                <Label text="Capacidade:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextField fx:id="campoQuant" promptText="Capacidade de passageiros"
+                    GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            </GridPane>
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                <Button text="Cancelar" onAction="#cancelar" prefWidth="100" />
+                <Button fx:id="cadastrar" text="Cadastrar" onAction="#cadastrar" prefWidth="100" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,5 +1,7 @@
 package projeto.controller.cadastros;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -22,8 +24,8 @@ public class CadastroPassageiroController extends FuncoesComunsController {
     PassageiroService servico = new PassageiroService();
 
     @FXML
-    public void cancelar(ActionEvent evento) {
-        fecharPopup(evento);
+    public void cancelar(ActionEvent evento) throws IOException {
+        trocarTela(evento, GerenciamentoPassageiroView.carregar(), "Gerenciamento de passageiros");
     }
 
     @FXML
