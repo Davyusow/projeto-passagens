@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.ObjetoNaoEncontradoException;
 import projeto.exceptions.PassageiroNEncontradoException;
 import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passageiro;
@@ -47,7 +48,7 @@ public class RepositorioPassageiros {
 		return null;
 	}
 
-	public Passageiro procurarPassageiro(int id) throws PassagemNEncontradaException {
+	public Passageiro procurarPassageiro(int id) throws ObjetoNaoEncontradoException {
 		Passageiro passageiro = buscarPassageiroPorId(id);
 		if (passageiro == null){
 			throw new PassagemNEncontradaException("Passageiro com ID" + id + "não encontrado");
@@ -55,7 +56,7 @@ public class RepositorioPassageiros {
 		return passageiro;
 	}
 	
-	public boolean editarPassageiro(Passageiro passageiro) throws PassageiroNEncontradoException {
+	public boolean editarPassageiro(Passageiro passageiro) throws ObjetoNaoEncontradoException {
 		Passageiro busca = procurarPassageiro(passageiro.getId());
 		if (busca == null) {
 			throw new PassageiroNEncontradoException("Passageiro n encontrado");
@@ -69,17 +70,25 @@ public class RepositorioPassageiros {
 		return true;
 	}
 	
-	public boolean removerPassageiro(Passageiro passageiro) throws PassageiroNEncontradoException {
+	public boolean removerPassageiro(Passageiro passageiro) throws ObjetoNaoEncontradoException {
 		Passageiro busca = buscarPassageiroPorId(passageiro.getId());
 		if (busca == null) {
-			throw new PassageiroNEncontradoException("Passageiro n encontrado");
+			throw new ObjetoNaoEncontradoException("Passageiro não encontrado");
 		}
-		
+        /*boolean existe = repositorio.removerPassageiro(passageiro);
+        if (!existe) {
+            //Exceção: ObjectNonExistentException
+        }*/
 		passageiros.remove(busca);
 		return true;
 	}
 	
 	public List<Passageiro> findAll() {
+		/*        List<Passageiro> lista = repositorio.getPassageiros();
+        if (lista == null) {
+            //Exceção: EmptyListException
+        }
+        */
 		return new ArrayList<>(passageiros);
 	}
 }

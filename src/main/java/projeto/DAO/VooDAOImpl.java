@@ -2,6 +2,7 @@ package projeto.DAO;
 
 import java.util.List;
 
+import projeto.models.Passageiro;
 import projeto.models.Voo.Voo;
 import projeto.repos.RepositorioVoos;
 
@@ -26,12 +27,21 @@ public class VooDAOImpl implements ObjectDAO<Voo>{
 
     @Override
     public boolean remover(Voo voo) {
-        return repositorioVoos.removerVoo(voo);
+    	boolean existe = repositorioVoos.removerVoo(voo);
+    	if (!existe) {
+    		//Exceção: objeto não existe
+    	}
+    
+    	return existe;
     }
 
     @Override
     public List<Voo> findAll() {
-        return repositorioVoos.findAll();
+        List<Voo> lista = repositorioVoos.findAll();
+        if (lista == null) {
+        	//exceção: lista vazia
+        }
+                
+        return lista;
     }
-
 }

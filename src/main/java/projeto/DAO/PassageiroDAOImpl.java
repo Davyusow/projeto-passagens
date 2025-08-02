@@ -6,34 +6,31 @@ import projeto.repos.RepositorioPassageiros;
 import java.util.List;
 
 public class PassageiroDAOImpl implements ObjectDAO<Passageiro> {
-    private final RepositorioPassageiros repositorio = RepositorioPassageiros.getInstance();
+    
+	private final RepositorioPassageiros repositorio = RepositorioPassageiros.getInstance();
 
-    public void criar(Passageiro passageiro){
+	@Override
+    public void criar(Passageiro passageiro) {
         repositorio.criarPassageiro(passageiro);
     }
 
-    public Passageiro procurar(int id){
-        Passageiro buscado = repositorio.procurarPassageiro(id);
-        return buscado;
+	@Override
+    public Passageiro procurar(int id) {
+        return repositorio.procurarPassageiro(id);
     }
 
-    public boolean editar(Passageiro passageiro){
-       return false;
+	@Override
+    public boolean editar(Passageiro passageiro) {
+       return repositorio.editarPassageiro(passageiro);
+    }
+	
+	@Override
+    public boolean remover(Passageiro passageiro) {
+        return repositorio.removerPassageiro(passageiro);
     }
 
-    public boolean remover(Passageiro passageiro){
-        boolean existe = repositorio.removerPassageiro(passageiro);
-        if(!existe){
-            //Exceção: ObjectNonExistentException
-        }
-        return existe;
-    }
-
-    public List<Passageiro> findAll(){
-        List<Passageiro> lista = repositorio.getPassageiros();
-        if(lista == null) {
-            //Exceção: EmptyListException
-        }
-        return lista;
+	@Override
+    public List<Passageiro> findAll() {
+        return repositorio.getPassageiros();
     }
 }
