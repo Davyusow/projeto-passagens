@@ -8,7 +8,6 @@ import projeto.exceptions.ObjetoNaoEncontradoException;
 import projeto.exceptions.PassageiroNEncontradoException;
 import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passageiro;
-import projeto.models.Passagem;
 
 public class RepositorioPassageiros {
 	

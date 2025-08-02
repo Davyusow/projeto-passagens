@@ -43,7 +43,7 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
 
     @FXML
     public void initialize(){
-        colunaDestino.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colunaDestino.setCellValueFactory(new PropertyValueFactory<>("destino"));
         colunaAssento.setCellValueFactory(new PropertyValueFactory<>("assento"));
         colunaTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));

@@ -8,10 +8,11 @@ public class PassagemService {
 
     private final ObjectDAO<Passagem> passagemDAO = new PassagemDAOImpl();
 
-    public void cadastrar(PassagemDados dados){
+    public Passagem cadastrar(PassagemDados dados){
         validarRegrasDeNegocio(dados);
-
-        passagemDAO.criar(dados.toModel());
+        Passagem passagem = dados.toModel();
+        passagemDAO.criar(passagem);
+        return passagem;
     }
 
     private void validarRegrasDeNegocio(PassagemDados dados){

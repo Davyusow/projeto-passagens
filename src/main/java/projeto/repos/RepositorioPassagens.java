@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passagem;
-import projeto.models.Reserva;
 
 public class RepositorioPassagens {
 	

@@ -12,8 +12,8 @@ public class Passagem {
     private Passageiro passageiro;
     private Voo voo;
     private String assento;
-    private String tipo; //esses dois são para a tabela
-    private String destino;
+    // private String tipo; //esses dois são para a tabela
+    // private String destino;
 
     public Passagem(Passageiro passageiro, Voo voo, String assento) {
     
