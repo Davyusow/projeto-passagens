@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -55,6 +56,13 @@ public abstract class FuncoesComunsController {
     public void fecharPopup(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    public void exibirAlerta(Alert.AlertType tipo, String titulo, String conteudo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setHeaderText(titulo);
+        alerta.setContentText(conteudo);
+        alerta.showAndWait();
     }
 
 }

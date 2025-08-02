@@ -4,18 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import projeto.DAO.PassageiroDAO;
 import projeto.DAO.PassageiroDAOImpl;
 import projeto.models.Passageiro;
-import projeto.view.GerenciamentoPassageiroView;
 import projeto.view.TelaEntradaView;
 import projeto.view.cadastro.CadastroPassageiroView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

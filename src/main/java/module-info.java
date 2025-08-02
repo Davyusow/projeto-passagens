@@ -9,6 +9,7 @@ module projeto {
     opens projeto.models to javafx.fxml;
     opens projeto.controller.cadastros to javafx.fxml;
     opens projeto.view to javafx.fxml;
+    opens projeto.models.Voo to javafx.base;
     
     exports projeto;
     exports projeto.models;

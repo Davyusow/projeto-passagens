@@ -36,22 +36,17 @@ public class RepositorioVoos {
 		voos.add(voo);
 	}
 
-	public int procurarVoo(int id) {
-		for (Voo v : voos) {
-			if (v.getId() == id) {
-				return v.getId();
-			}
-		}
-		return -1;
+	public Voo procurarVoo(int id) {
+		return voos.get(id);
 	}
 
 	public boolean editarVoo(Voo voo) {
-		int busca = procurarVoo(voo.getId());
-		if (busca == -1) {
+		Voo busca = procurarVoo(voo.getId());
+		if (busca == null) {
 			return false;
 		}
 		
-		Voo vooExistente = voos.get(busca);
+		Voo vooExistente = voos.get(voo.getId());
 		vooExistente.setCodigo(voo.getCodigo());
 		vooExistente.setHorarioEmbarque(voo.getHorarioEmbarque());
 		vooExistente.setHorarioChegadaEstimada(voo.getHorarioChegadaEstimada());
@@ -63,8 +58,8 @@ public class RepositorioVoos {
 	}
 	
 	public boolean removerVoo(Voo voo) {
-		int busca = procurarVoo(voo.getId());
-		if (busca == -1) {
+		Voo busca = procurarVoo(voo.getId());
+		if (busca == null) {
 			return false;
 		}
 		

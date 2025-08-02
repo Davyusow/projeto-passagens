@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import projeto.view.TelaEntradaView;
 
-public class main extends Application {
+public class App extends Application {
 
     @Override
     @SuppressWarnings("exports")

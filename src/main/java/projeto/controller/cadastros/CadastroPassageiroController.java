@@ -2,7 +2,6 @@ package projeto.controller.cadastros;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import projeto.DAO.PassageiroDAO;
@@ -10,7 +9,6 @@ import projeto.DAO.PassageiroDAOImpl;
 import projeto.controller.FuncoesComunsController;
 import projeto.models.Passageiro;
 import projeto.view.GerenciamentoPassageiroView;
-import projeto.view.cadastro.CadastroPassageiroView;
 
 public class CadastroPassageiroController extends FuncoesComunsController {
 

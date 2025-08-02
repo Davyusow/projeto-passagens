@@ -6,30 +6,29 @@ import java.util.Objects;
 public abstract class Voo {
 	
 	private int id;
-    private String Codigo;
-    private LocalDateTime HorarioEmbarque;
-    private LocalDateTime HorarioChegadaEstimada;
-    private Integer QtdPassageiros;
-    private String LocalEmbarque;
-    private String LocalChegada;
+    private String codigo;
+    private LocalDateTime horarioEmbarque;
+    private LocalDateTime horarioChegadaEstimada;
+    private Integer qtdPassageiros;
+    private String localEmbarque;
+    private String localChegada;
 
-    public Voo(int id, String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String localEmbarque, String localChegada) {
-        this.id = id;
-    	this.Codigo = codigo;
-        this.HorarioEmbarque = horarioEmbarque;
-        this.HorarioChegadaEstimada = horarioChegadaEstimada;
-        this.QtdPassageiros = qtdPassageiros;
-        this.LocalEmbarque = localEmbarque;
-        this.LocalChegada = localChegada;
+    public Voo(String codigo, LocalDateTime horarioEmbarque, LocalDateTime horarioChegadaEstimada, Integer qtdPassageiros, String localEmbarque, String localChegada) {
+    	this.codigo = codigo;
+        this.horarioEmbarque = horarioEmbarque;
+        this.horarioChegadaEstimada = horarioChegadaEstimada;
+        this.qtdPassageiros = qtdPassageiros;
+        this.localEmbarque = localEmbarque;
+        this.localChegada = localChegada;
     }
     
     public Voo() {
-        Codigo = "0000";
-        HorarioEmbarque = LocalDateTime.now();
-        HorarioChegadaEstimada = HorarioEmbarque.plusHours(5);
-        QtdPassageiros = 1;
-        LocalEmbarque = "";
-        LocalChegada =  "";
+        codigo = "0000";
+        horarioEmbarque = LocalDateTime.now();
+        horarioChegadaEstimada = horarioEmbarque.plusHours(5);
+        qtdPassageiros = 1;
+        localEmbarque = "";
+        localChegada =  "";
 
     }
 
@@ -44,63 +43,63 @@ public abstract class Voo {
     }
 
     public String getCodigo() {
-        return Codigo;
+        return codigo;
     }
 
     public void setCodigo(String codigo) {
-        Codigo = codigo;
+        this.codigo = codigo;
     }
 
     public LocalDateTime getHorarioEmbarque() {
-        return HorarioEmbarque;
+        return horarioEmbarque;
     }
 
     public void setHorarioEmbarque(LocalDateTime horarioEmbarque) {
-        HorarioEmbarque = horarioEmbarque;
+        this.horarioEmbarque = horarioEmbarque;
     }
 
     public LocalDateTime getHorarioChegadaEstimada() {
-        return HorarioChegadaEstimada;
+        return horarioChegadaEstimada;
     }
 
     public void setHorarioChegadaEstimada(LocalDateTime horarioChegadaEstimada) {
-        HorarioChegadaEstimada = horarioChegadaEstimada;
+        this.horarioChegadaEstimada = horarioChegadaEstimada;
     }
 
     public Integer getQtdPassageiros() {
-        return QtdPassageiros;
+        return qtdPassageiros;
     }
 
     public void setQtdPassageiros(Integer qtdPassageiros) {
-        QtdPassageiros = qtdPassageiros;
+        this.qtdPassageiros = qtdPassageiros;
     }
 
     public String getLocalEmbarque() {
-        return LocalEmbarque;
+        return localEmbarque;
     }
 
     public void setLocalEmbarque(String localEmbarque) {
-        LocalEmbarque = localEmbarque;
+        this.localEmbarque = localEmbarque;
     }
 
     public String getLocalChegada() {
-        return LocalChegada;
+        return localChegada;
     }
 
     public void setLocalChegada(String localChegada) {
-        LocalChegada = localChegada;
+        this.localChegada = localChegada;
     }
 
     @Override
     public String toString() {
         return "Voo{" +
         		"id='" + id + '\'' +
-                "Codigo='" + Codigo + '\'' +
-                ", HorarioEmbarque=" + HorarioEmbarque +
-                ", HorarioChegadaEstimada=" + HorarioChegadaEstimada +
-                ", QtdPassageiros=" + QtdPassageiros +
-                ", LocalEmbarque='" + LocalEmbarque + '\'' +
-                ", LocalChegada='" + LocalChegada + '\'' +
+                "Codigo='" + codigo + '\'' +
+                ", HorarioEmbarque=" + horarioEmbarque +
+                ", HorarioChegadaEstimada=" + horarioChegadaEstimada +
+                ", QtdPassageiros=" + qtdPassageiros +
+                ", LocalEmbarque='" + localEmbarque + '\'' +
+                ", LocalChegada='" + localChegada + '\'' +
                 '}';
     }
 
@@ -109,16 +108,16 @@ public abstract class Voo {
         if (o == null || getClass() != o.getClass()) return false;
         Voo voo = (Voo) o;
         return Objects.equals(id, voo.id) &&
-        		Objects.equals(Codigo, voo.Codigo) &&
-        		Objects.equals(HorarioEmbarque, voo.HorarioEmbarque) &&
-        		Objects.equals(HorarioChegadaEstimada, voo.HorarioChegadaEstimada) &&
-        		Objects.equals(QtdPassageiros, voo.QtdPassageiros) &&
-        		Objects.equals(LocalEmbarque, voo.LocalEmbarque) &&
-        		Objects.equals(LocalChegada, voo.LocalChegada);
+        		Objects.equals(codigo, voo.codigo) &&
+        		Objects.equals(horarioEmbarque, voo.horarioEmbarque) &&
+        		Objects.equals(horarioChegadaEstimada, voo.horarioChegadaEstimada) &&
+        		Objects.equals(qtdPassageiros, voo.qtdPassageiros) &&
+        		Objects.equals(localEmbarque, voo.localEmbarque) &&
+        		Objects.equals(localChegada, voo.localChegada);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Codigo, HorarioEmbarque, HorarioChegadaEstimada, QtdPassageiros, LocalEmbarque, LocalChegada);
+        return Objects.hash(id, codigo, horarioEmbarque, horarioChegadaEstimada, qtdPassageiros, localEmbarque, localChegada);
     }
 }

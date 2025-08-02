@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import projeto.DAO.PassageiroDAO;
 import projeto.models.Passageiro;
 
 public class RepositorioPassageiros {
