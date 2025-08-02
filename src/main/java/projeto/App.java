@@ -14,6 +14,8 @@ public class App extends Application {
         Parent raiz = TelaEntradaView.carregar();
         janela.setScene(new Scene(raiz));
         janela.setTitle("Menu inicial");
+        janela.setMinWidth(600);
+        janela.setMinHeight(400);
         janela.show();
     }
 
