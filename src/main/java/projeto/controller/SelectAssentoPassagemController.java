@@ -6,35 +6,32 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import projeto.DAO.ObjectDAO;
-import projeto.DAO.PassagemDAOImpl;
-import projeto.DAO.ReservaDAOImpl;
-import projeto.DAO.VooDAOImpl;
 import projeto.models.Passageiro;
-import projeto.models.Passagem;
-import projeto.models.Reserva;
 import projeto.models.Voo.Voo;
+import projeto.service.AssentoService;
+import projeto.service.PassagemDados;
 import projeto.util.Aviso;
 import projeto.view.TelaEntradaView;
 
 public class SelectAssentoPassagemController extends FuncoesComunsController {
 
     @FXML
-    private Label lblNumeroVoo;
+    private Label textoNumeroVoo;
     @FXML
-    private Label lblDestino;
+    private Label textoDestino;
     @FXML
-    private Label lblData;
+    private Label textoData;
     @FXML
-    private Label lblPassageiro;
+    private Label textoPassageiro;
     @FXML
     private GridPane gridAssentos;
     @FXML
-    private Button btnConfirmar;
+    private Button btConfirmar;
 
     private static Voo vooSelecionado;
     private static Passageiro passageiroSelecionado;
     private String assentoSelecionado;
+    private AssentoService service = new AssentoService();
 
     public static void setVoo(Voo voo) {
         vooSelecionado = voo;
@@ -46,24 +43,14 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
 
     @FXML
     public void initialize() {
-        atualizarInformacoesPassageiro();
-        atualizarInformacoesVoo();
-    }
-
-    private void atualizarInformacoesVoo() {
-        if (vooSelecionado != null) {
-            lblNumeroVoo.setText(String.valueOf(vooSelecionado.getId()));
-            lblDestino.setText(vooSelecionado.getLocalChegada());
-            lblData.setText(vooSelecionado.getHorarioChegadaEstimada()
-                    .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        if (vooSelecionado != null && passageiroSelecionado != null) {
+            textoNumeroVoo.setText(String.valueOf(vooSelecionado.getId()));
+            textoDestino.setText(vooSelecionado.getLocalChegada());
+            textoData.setText(
+                    vooSelecionado.getHorarioChegadaEstimada().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            textoPassageiro.setText(passageiroSelecionado.getNome());
 
             carregarAssentos();
-        }
-    }
-
-    private void atualizarInformacoesPassageiro() {
-        if (passageiroSelecionado != null) {
-            lblPassageiro.setText(passageiroSelecionado.getNome());
         }
     }
 
@@ -82,18 +69,19 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
                         break;
 
                     String assento = String.format("%02d", assentoNum);
-                    Button btnAssento = new Button(assento);
-                    btnAssento.setPrefSize(40, 40);
+                    Button btAssento = new Button(assento);
+                    btAssento.setPrefSize(40, 40);
 
                     if (verificarAssentoOcupado(assento)) {
-                        btnAssento.setStyle("-fx-background-color: #ffcccc; -fx-text-fill: #666;");
-                        btnAssento.setDisable(true);
-                    } else {
-                        btnAssento.setStyle("-fx-background-color: #e6f7ff;");
-                        btnAssento.setOnAction(e -> selecionarAssento(assento, btnAssento));
+                        btAssento.setStyle("-fx-background-color: #c41313ff; -fx-text-fill: #666;");
+                        btAssento.setDisable(true);
+                    }
+                    if (!verificarAssentoOcupado(assento)) {
+                        btAssento.setStyle("-fx-background-color: #e6f7ff;");
+                        btAssento.setOnAction(evento -> selecionarAssento(assento, btAssento));
                     }
 
-                    gridAssentos.add(btnAssento, coluna, fileira);
+                    gridAssentos.add(btAssento, coluna, fileira);
                 }
             }
         } catch (Exception e) {
@@ -114,46 +102,27 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
 
         btn.setStyle("-fx-background-color: #99ccff; -fx-font-weight: bold;");
         assentoSelecionado = assento;
-        btnConfirmar.setDisable(false);
+        btConfirmar.setDisable(false);
     }
 
     @FXML
     private void handleVoltar(javafx.event.ActionEvent evento) throws IOException {
-        if (Aviso.confirmacao("Confirmação", "Tem certeza que deseja sair?"))
             trocarTela(evento, TelaEntradaView.carregar(), "Menu Inicial");
     }
 
     @FXML
     private void handleConfirmar(javafx.event.ActionEvent evento) throws IOException {
-        try {
-            if (assentoSelecionado == null) {
-                Aviso.informacao("Aviso", "Selecione um assento");
-                return;
-            }
-            if (Aviso.confirmacao("Confirmação", "Deseja escolher este assento?")) {
-                try {
-                    Passagem passagem = new Passagem(passageiroSelecionado, vooSelecionado, assentoSelecionado);
-                    ObjectDAO<Passagem> passagemDAO = new PassagemDAOImpl();
-                    ObjectDAO<Reserva> reservDAO = new ReservaDAOImpl();
-                    passagemDAO.criar(passagem);
-                    reservDAO.criar(new Reserva(passageiroSelecionado.getId(), passagem.getId(), vooSelecionado.getId()));
+        if (assentoSelecionado != null) {
+            try {
+                PassagemDados dados = new PassagemDados(passageiroSelecionado, vooSelecionado, assentoSelecionado);                
+                service.realizarReserva(dados);
 
+                trocarTela(evento, TelaEntradaView.carregar(), "Confirmação");
 
-                    VooDAOImpl vooDAO = new VooDAOImpl();
-                    if (!vooDAO.ocuparAssento(vooSelecionado.getId(), assentoSelecionado)) {
-                        throw new Exception("Falha ao ocupar assento no banco de dados");
-                    }
-
-                    trocarTela(evento, TelaEntradaView.carregar(), "Confirmação");
-
-                } catch (Exception e) {
-                    Aviso.erro("Erro", "Erro ao salvar a reserva");
-                }
-
+            } catch (Exception e) {
+                Aviso.erro("Erro", "Erro ao salvar a reserva");
             }
 
-        } catch (Exception e) {
-            Aviso.erro("Erro", "Erro inesperado");
         }
     }
 }

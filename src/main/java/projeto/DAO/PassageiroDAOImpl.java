@@ -33,4 +33,5 @@ public class PassageiroDAOImpl implements ObjectDAO<Passageiro> {
     public List<Passageiro> findAll() {
         return repositorio.getPassageiros();
     }
+
 }

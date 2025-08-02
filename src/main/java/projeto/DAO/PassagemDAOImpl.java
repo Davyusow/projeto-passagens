@@ -35,4 +35,8 @@ public class PassagemDAOImpl implements ObjectDAO<Passagem> {
 	public List<Passagem> findAll() {
 		return repositorio.getPassagens();
 	}
+
+    public Integer getContador(){
+        return repositorio.getContador().get();
+    }
 }
