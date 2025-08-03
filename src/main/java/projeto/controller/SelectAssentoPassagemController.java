@@ -31,7 +31,8 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
     private static Voo vooSelecionado;
     private static Passageiro passageiroSelecionado;
     private String assentoSelecionado;
-    private AssentoService service = new AssentoService();
+
+    public AssentoService servico = new AssentoService();
 
     @SuppressWarnings("exports")
     public static void setVoo(Voo voo) {
@@ -41,6 +42,15 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
     public static void setPassageiro(Passageiro passageiro) {
         passageiroSelecionado = passageiro;
     }
+
+    public static Passageiro getPassageiro(){
+        return passageiroSelecionado;
+    }
+
+    public static Voo getVoo(){
+        return vooSelecionado;
+    }
+
 
     @FXML
     public void initialize() {
@@ -117,7 +127,7 @@ public class SelectAssentoPassagemController extends FuncoesComunsController {
         if (assentoSelecionado != null) {
             try {
                 PassagemDados dados = new PassagemDados(passageiroSelecionado, vooSelecionado, assentoSelecionado);                
-                service.realizarReserva(dados);
+                servico.realizarReserva(dados);
 
                 trocarTela(evento, TelaEntradaView.carregar(), "Confirmação");
 

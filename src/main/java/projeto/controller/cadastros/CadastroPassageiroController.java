@@ -21,7 +21,7 @@ public class CadastroPassageiroController extends FuncoesComunsController {
     @FXML
     private TextField campoEmail;
 
-    PassageiroService servico = new PassageiroService();
+    public PassageiroService servico = new PassageiroService();
 
     @FXML
     public void cancelar(ActionEvent evento) throws IOException {
@@ -37,7 +37,7 @@ public class CadastroPassageiroController extends FuncoesComunsController {
                 campoCpf.getText(),
                 campoEmail.getText());
 
-            servico.cadastrarNovoPassageiro(dadosDaTela); //valida os dados
+            servico.cadastrarPassageiro(dadosDaTela); //valida os dados
             trocarTela(event, GerenciamentoPassageiroView.carregar(), "Gerenciamento de Passageiros");
 
         } catch (Exception e) { //tratamento dos erros lançados pelo servico

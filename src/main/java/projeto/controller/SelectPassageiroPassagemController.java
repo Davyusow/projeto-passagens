@@ -17,10 +17,10 @@ import projeto.view.TelaEntradaView;
 import java.io.IOException;
 import java.util.List;
 
-public class SelectPassageiroPassagemController extends FuncoesComunsController{
+public class SelectPassageiroPassagemController extends FuncoesComunsController {
 
     @FXML
-    private TableView<Passageiro> tabelaPassageiros;
+    TableView<Passageiro> tabelaPassageiros;
     @FXML
     private TableColumn<Passageiro, String> colunaNome;
     @FXML
@@ -49,8 +49,6 @@ public class SelectPassageiroPassagemController extends FuncoesComunsController{
         tabelaPassageiros.setItems(observablePassageiros);
     }
 
-
-
     @FXML
     void handleCancelar(ActionEvent event) throws IOException {
         trocarTela(event, TelaEntradaView.carregar(), "Menu inicial");
@@ -59,12 +57,12 @@ public class SelectPassageiroPassagemController extends FuncoesComunsController{
     @FXML
     void handleAvancar(ActionEvent event) throws IOException {
         Passageiro selecionado = tabelaPassageiros.getSelectionModel().getSelectedItem();
-        if(selecionado != null){
+        if (selecionado != null) {
             SelectVooPassagemController.setPassageiro(selecionado);
             trocarTela(event, SelectVooPassagemView.carregar(), "Seleção do Voo");
-        }else{
+        } else {
             Aviso.informacao("Atenção", "Nenhum passageiro selecionado");
         }
     }
-    
+
 }

@@ -19,8 +19,7 @@ import projeto.view.TelaEntradaView;
 
 public class SelectPassageiroReservasController extends FuncoesComunsController {
 
-    @FXML
-    private TableView<Passageiro> tabelaPassageiros;
+    @FXML TableView<Passageiro> tabelaPassageiros;
     @FXML
     private TableColumn<Passageiro, String> colunaNome;
     @FXML

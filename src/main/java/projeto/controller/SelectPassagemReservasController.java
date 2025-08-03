@@ -22,8 +22,7 @@ import projeto.view.TelaEntradaView;
 
 public class SelectPassagemReservasController extends FuncoesComunsController {
 
-    @FXML
-    private TableView<Passagem> tabelaPassagem;
+    @FXML TableView<Passagem> tabelaPassagem;
     @FXML
     private TableColumn<Passagem, String> colunaDestino; 
     @FXML
@@ -51,7 +50,7 @@ public class SelectPassagemReservasController extends FuncoesComunsController {
         carregarPassagens();
     }
 
-    private void carregarPassagens() {
+    void carregarPassagens() {
         try {
             tabelaPassagem.getItems().clear();
     

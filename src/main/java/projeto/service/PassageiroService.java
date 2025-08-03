@@ -8,7 +8,7 @@ public class PassageiroService {
 
     private final ObjectDAO<Passageiro> passageiroDAO = new PassageiroDAOImpl();
 
-    public void cadastrarNovoPassageiro(PassageiroDados dados) throws Exception{
+    public void cadastrarPassageiro(PassageiroDados dados) throws Exception{
         validarRegrasDeNegocio(dados);
 
         Passageiro novoPassageiro = new Passageiro(dados.nome(),dados.cpf(),dados.email());

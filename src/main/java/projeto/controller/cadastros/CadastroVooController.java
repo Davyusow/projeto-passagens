@@ -18,7 +18,7 @@ import java.time.format.DateTimeParseException;
 
 public class CadastroVooController extends FuncoesComunsController {
 
-    private final VooService servico = new VooService();
+    public final VooService servico = new VooService();
 
     @FXML
     private TextField campoOrigem;

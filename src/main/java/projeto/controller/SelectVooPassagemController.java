@@ -20,8 +20,7 @@ import projeto.view.TelaEntradaView;
 
 public class SelectVooPassagemController extends FuncoesComunsController {
     
-    @FXML
-    private TableView<Voo> tabelaViagens;
+    @FXML TableView<Voo> tabelaViagens;
     @FXML
     private TableColumn<Voo, String> colunaDestino;
     @FXML
@@ -36,6 +35,10 @@ public class SelectVooPassagemController extends FuncoesComunsController {
     private static Passageiro passageiro;
     public static void setPassageiro(Passageiro novoPassageiro){
         passageiro = novoPassageiro;
+    }
+
+    public static Passageiro getPassageiro(){
+        return passageiro;
     }
 
     @FXML

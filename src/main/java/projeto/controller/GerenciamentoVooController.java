@@ -21,7 +21,7 @@ import java.util.List;
 public class GerenciamentoVooController extends FuncoesComunsController {
 
     @FXML
-    private TableView<Voo> tabelaViagens;
+    TableView<Voo> tabelaViagens;
     @FXML
     private TableColumn<Voo, String> colunaDestino;
     @FXML
@@ -43,7 +43,7 @@ public class GerenciamentoVooController extends FuncoesComunsController {
         carregarViagens();
     }
 
-    private void carregarViagens() {
+    void carregarViagens() {
         tabelaViagens.getItems().clear();
         List<Voo> voos = vooDAO.findAll();
         ObservableList<Voo> observableVoos = FXCollections.observableArrayList(voos);
