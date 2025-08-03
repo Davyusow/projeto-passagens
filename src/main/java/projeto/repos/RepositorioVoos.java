@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import projeto.exceptions.VooNEncontradoException;
+import projeto.exceptions.ListaVaziaException;
+import projeto.exceptions.ObjetoNaoEncontradoException;
 import projeto.models.Voo.Voo;
 
 public class RepositorioVoos {
@@ -36,27 +37,28 @@ public class RepositorioVoos {
 		voo.setId(contador.getAndIncrement());
 		voos.add(voo);
 	}
-	private Voo buscarVooPorId(int id) {
+	
+	public Voo procurarVoo(int id) throws ObjetoNaoEncontradoException {
+		boolean idEncontrado = false;
+		
 		for (Voo voo : voos) {
 			if (voo.getId() == id) {
 				return voo;
 			}
 		}
+		
+		if (!idEncontrado) {
+			throw new ObjetoNaoEncontradoException("Não foi encontrado nenhum(a) " + " voo " + " com ID " + id);
+		}
+		
 		return null;
 	}
 
-	public Voo procurarVoo(int id) throws VooNEncontradoException {
-		Voo voo = buscarVooPorId(id);
-		if (voo == null) {
-			throw new VooNEncontradoException("Voo com ID " + id + " não encontrado");
-		}
-		return voo;
-	}
-
-	public boolean editarVoo(Voo voo) throws VooNEncontradoException {
-		Voo busca = buscarVooPorId(voo.getId());
+	public boolean editarVoo(Voo voo) throws ObjetoNaoEncontradoException {
+		Voo busca = procurarVoo(voo.getId());
 		if (busca == null) {
-			throw new VooNEncontradoException("Voo não encontrado");
+			throw new ObjetoNaoEncontradoException("Tentativa de edição falha:" + " Voo " +
+													voo.getId() + " não foi  encontrado");
 		}
 		
 		Voo vooExistente = voos.get(voo.getId());
@@ -70,18 +72,25 @@ public class RepositorioVoos {
 		return true;
 	}
 	
-	public boolean removerVoo(Voo voo) {
-		Voo busca = buscarVooPorId(voo.getId());
+	public boolean removerVoo(Voo voo) throws ObjetoNaoEncontradoException {
+		Voo busca = procurarVoo(voo.getId());
 		if (busca == null) {
-			return false;
+			throw new ObjetoNaoEncontradoException("Tentativa de remoção falha:" + " Voo " +
+													voo.getId() + " não foi  encontrado(a)");
 		}
 		
 		voos.remove(busca);
 		return true;
 	}
 	
-	public List<Voo> findAll() {
-		return new ArrayList<>(voos);
+	public List<Voo> findAll() throws ListaVaziaException {
+		List<Voo> lista = this.getVoos();
+		
+		if (lista.isEmpty()) {
+			throw new ListaVaziaException("A lista pedida está vazia");
+		}
+
+		return new ArrayList<>(lista);
 	}
 	
 }

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import projeto.exceptions.ReservaNEncontradaException;
+import projeto.exceptions.ListaVaziaException;
+import projeto.exceptions.ObjetoNaoEncontradoException;
 import projeto.models.Reserva;
 
 public class RepositorioReservas {
@@ -37,40 +38,42 @@ public class RepositorioReservas {
 		reservas.add(reserva);
 	}
 
-	private Reserva buscarReservaPorId(int id) {
+	public Reserva procurarReserva(int id) throws ObjetoNaoEncontradoException {
+		boolean idEncontrado = false;
+		
 		for (Reserva reserva : reservas) {
 			if (reserva.getId() == id) {
 				return reserva;
 			}
 		}
+		
+		if (!idEncontrado) {
+			throw new ObjetoNaoEncontradoException("Não foi encontrado nenhum(a) " + " reserva " + " com ID " + id);
+		}
+		
 		return null;
 	}
-
-	public Reserva procurarReserva(int id) throws ReservaNEncontradaException {
-		Reserva reserva = buscarReservaPorId(id);
-		if (reserva == null) {
-			throw new ReservaNEncontradaException("Reserva com ID " + id + " não encontrada");
-		}
-		return reserva;
-	}
 	
-	public boolean editarReserva(Reserva reserva) throws ReservaNEncontradaException {
-		Reserva busca = buscarReservaPorId(reserva.getId());
+	public boolean editarReserva(Reserva reserva) throws ObjetoNaoEncontradoException {
+		Reserva busca = procurarReserva(reserva.getId());
 		if (busca == null) {
-			throw new ReservaNEncontradaException("Reserva não encontrada");
+			throw new ObjetoNaoEncontradoException("Tentativa de edição falha:" + " Reserva " +
+													reserva.getId() + " não foi  encontrado");
 		}
 		
 		Reserva reservaExistente = reservas.get(reserva.getId());
 		reservaExistente.setIdPassageiro(reserva.getIdPassageiro());
 		reservaExistente.setIdPassagem(reserva.getIdPassageiro());
 		reservaExistente.setIdVoo(reserva.getIdVoo());
+		
 		return true;
 	}
 
-	public boolean removerReserva(Reserva reserva) throws ReservaNEncontradaException {
-		Reserva busca = buscarReservaPorId(reserva.getId());
+	public boolean removerReserva(Reserva reserva) throws ObjetoNaoEncontradoException {
+		Reserva busca = procurarReserva(reserva.getId());
 		if (busca == null) {
-			throw new ReservaNEncontradaException("Reserva não encontrada");
+			throw new ObjetoNaoEncontradoException("Tentativa de remoção falha:" + " Reserva " +
+													reserva.getId() + " não foi  encontrado(a)");
 
 		}
 		
@@ -78,7 +81,13 @@ public class RepositorioReservas {
 		return true;
 	}
 	
-	public List<Reserva> findAll() {
-		return new ArrayList<>(reservas); 
+	public List<Reserva> findAll() throws ListaVaziaException {
+		List<Reserva> lista = this.getReservas();
+		
+		if (lista.isEmpty()) {
+			throw new ListaVaziaException("A lista pedida está vazia");
+		}
+
+		return new ArrayList<>(lista);
 	}
 }

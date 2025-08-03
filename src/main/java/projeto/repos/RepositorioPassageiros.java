@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import projeto.exceptions.ListaVaziaException;
 import projeto.exceptions.ObjetoNaoEncontradoException;
-import projeto.exceptions.PassageiroNEncontradoException;
-import projeto.exceptions.PassagemNEncontradaException;
 import projeto.models.Passageiro;
 
 public class RepositorioPassageiros {
@@ -38,28 +37,28 @@ public class RepositorioPassageiros {
 		passageiro.setId(contador.getAndIncrement());
 		passageiros.add(passageiro);
 	}
-	
-	private Passageiro buscarPassageiroPorId(int id){
-		for (Passageiro passageiro : passageiros){
-			if (passageiro.getId() == id) {
-				return passageiro;
-			}
-		}
-		return null;
-	}
 
 	public Passageiro procurarPassageiro(int id) throws ObjetoNaoEncontradoException {
-		Passageiro passageiro = buscarPassageiroPorId(id);
-		if (passageiro == null){
-			throw new PassagemNEncontradaException("Passageiro com ID" + id + "não encontrado");
+		boolean idEncontrado = false;
+		
+		for (Passageiro passageiro : passageiros) {
+			if (passageiro.getId() == id) {
+				return passageiro;				
+			}
 		}
-		return passageiro;
+		
+		if (!idEncontrado) {
+			throw new ObjetoNaoEncontradoException("Não foi encontrado nenhum(a) " + " passageiro " + " com ID " + id);
+		}
+		
+		return null;
 	}
 	
 	public boolean editarPassageiro(Passageiro passageiro) throws ObjetoNaoEncontradoException {
 		Passageiro busca = procurarPassageiro(passageiro.getId());
 		if (busca == null) {
-			throw new PassageiroNEncontradoException("Passageiro n encontrado");
+			throw new ObjetoNaoEncontradoException("Tentativa de edição falha:" + " Passageiro " +
+													passageiro.getId() + " não foi  encontrado");
 		}
 		
 		Passageiro passageiroExistente = passageiros.get(passageiro.getId());
@@ -71,24 +70,23 @@ public class RepositorioPassageiros {
 	}
 	
 	public boolean removerPassageiro(Passageiro passageiro) throws ObjetoNaoEncontradoException {
-		Passageiro busca = buscarPassageiroPorId(passageiro.getId());
+		Passageiro busca = procurarPassageiro(passageiro.getId());
 		if (busca == null) {
-			throw new ObjetoNaoEncontradoException("Passageiro não encontrado");
+			throw new ObjetoNaoEncontradoException("Tentativa de remoção falha:" + "Passageiro " +
+													passageiro.getId() + " não foi  encontrado(a)");
 		}
-        /*boolean existe = repositorio.removerPassageiro(passageiro);
-        if (!existe) {
-            //Exceção: ObjectNonExistentException
-        }*/
+		
 		passageiros.remove(busca);
 		return true;
 	}
 	
-	public List<Passageiro> findAll() {
-		/*        List<Passageiro> lista = repositorio.getPassageiros();
-        if (lista == null) {
-            //Exceção: EmptyListException
-        }
-        */
-		return new ArrayList<>(passageiros);
+	public List<Passageiro> findAll() throws ListaVaziaException {
+		List<Passageiro> lista = this.getPassageiros();
+		
+		if (lista.isEmpty()) {
+			throw new ListaVaziaException("A lista pedida está vazia");
+		}
+
+		return new ArrayList<>(lista);
 	}
 }

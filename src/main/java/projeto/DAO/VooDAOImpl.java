@@ -7,31 +7,35 @@ import projeto.repos.RepositorioVoos;
 
 public class VooDAOImpl implements ObjectDAO<Voo> {
 
-    private final RepositorioVoos repositorioVoos = RepositorioVoos.getInstance() ;
+    private final RepositorioVoos repositorio = RepositorioVoos.getInstance() ;
 
     @Override
     public void criar(Voo voo) {
-        repositorioVoos.criarVoo(voo);
+        repositorio.criarVoo(voo);
     }
 
     @Override
     public Voo procurar(int id) {
-        return repositorioVoos.procurarVoo(id);
+        return repositorio.procurarVoo(id);
     }
 
     @Override
     public boolean editar(Voo voo) {
-        return repositorioVoos.editarVoo(voo);
+        return repositorio.editarVoo(voo);
     }
 
     @Override
     public boolean remover(Voo voo) {
-    	return repositorioVoos.removerVoo(voo);
+    	return repositorio.removerVoo(voo);
     }
 
     @Override
     public List<Voo> findAll() {   
-        return repositorioVoos.findAll();
+        return repositorio.findAll();
+    }
+    
+    public Integer getContador() {
+    	return repositorio.getContador().get();
     }
 
     public boolean ocuparAssento(int idVoo, String assento) {
