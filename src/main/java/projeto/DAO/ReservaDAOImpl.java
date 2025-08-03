@@ -34,6 +34,10 @@ public class ReservaDAOImpl implements ObjectDAO<Reserva> {
 	public List<Reserva> findAll() {
 		return repositorio.getReservas();
 	}
+	
+	public Integer getContador() {
+		return repositorio.getContador().get();
+	}
 
 	public List<Reserva> findReservaPassageiro(int idPassageiro){
 		return repositorio.getReservas().stream()

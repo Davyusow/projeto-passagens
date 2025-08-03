@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import projeto.exceptions.PassagemNEncontradaException;
+import projeto.exceptions.ListaVaziaException;
+import projeto.exceptions.ObjetoNaoEncontradoException;
 import projeto.models.Passagem;
 
 public class RepositorioPassagens {
@@ -36,28 +37,28 @@ public class RepositorioPassagens {
 		passagem.setId(contador.getAndIncrement());
 		passagens.add(passagem);
 	}
-
-	private Passagem buscarPassagemPorId(int id){
-		for (Passagem passagem : passagens){
+	
+	public Passagem procurarPassagem(int id) throws ObjetoNaoEncontradoException {
+		boolean idEncontrado = false;
+		
+		for (Passagem passagem : passagens) {
 			if (passagem.getId() == id) {
 				return passagem;
 			}
 		}
+		
+		if (!idEncontrado) {
+			throw new ObjetoNaoEncontradoException("Não foi encontrado nenhum(a) " + " passagem " + " com ID " + id);
+		}
+		
 		return null;
 	}
-
-	public Passagem procurarPassagem(int id) throws PassagemNEncontradaException {
-		Passagem passagem = buscarPassagemPorId(id);
-		if (passagem == null){
-			throw new PassagemNEncontradaException("Passagem com ID" + id + "não encontrada");
-		}
-		return passagem;
-	}
 	
-	public boolean editarPassagem(Passagem passagem) throws PassagemNEncontradaException {
-		Passagem busca = buscarPassagemPorId(passagem.getId());
+	public boolean editarPassagem(Passagem passagem) throws ObjetoNaoEncontradoException {
+		Passagem busca = procurarPassagem(passagem.getId());
 		if (busca == null) {
-			throw new PassagemNEncontradaException("Passagem não encontrada");
+			throw new ObjetoNaoEncontradoException("Tentativa de edição falha:" + " Passagem " +
+													passagem.getId() + " não foi  encontrado");
 		}
 		
 		Passagem passagemExistente = passagens.get(passagem.getId());
@@ -67,18 +68,25 @@ public class RepositorioPassagens {
 		
 		return true;
 	}
-	
-	public boolean removerPassagem(Passagem passagem) throws PassagemNEncontradaException {
-		Passagem busca = buscarPassagemPorId(passagem.getId());
+
+	public boolean removerPassagem(Passagem passagem) throws ObjetoNaoEncontradoException {
+		Passagem busca = procurarPassagem(passagem.getId());
 		if (busca == null) {
-			throw new PassagemNEncontradaException("Passagem não encontrada");
+			throw new ObjetoNaoEncontradoException("Tentativa de remoção falha:" + " Passagem " +
+													passagem.getId() + " não foi  encontrado(a)");
 		}
 		
 		passagens.remove(busca);
 		return true;
 	}
 	
-	public List<Passagem> findAll() {
-		return new ArrayList<>(passagens);
+	public List<Passagem> findAll() throws ListaVaziaException {
+		List<Passagem> lista = this.getPassagens();
+		
+		if (lista.isEmpty()) {
+			throw new ListaVaziaException("A lista pedida está vazia");
+		}
+
+		return new ArrayList<>(lista);
 	}
 }
