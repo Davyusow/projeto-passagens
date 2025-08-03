@@ -37,7 +37,7 @@ public class CadastroPassageiroController extends FuncoesComunsController {
                 campoCpf.getText(),
                 campoEmail.getText());
 
-            servico.cadastrarNovoPassageiro(dadosDaTela); //valida os dados
+            servico.cadastrarNovoPassageiro(dadosDaTela); 
             trocarTela(event, GerenciamentoPassageiroView.carregar(), "Gerenciamento de Passageiros");
 
         } catch (Exception e) { //tratamento dos erros lançados pelo servico

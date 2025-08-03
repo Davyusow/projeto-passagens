@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 import projeto.DAO.ObjectDAO;
 import projeto.DAO.VooDAOImpl;
+import projeto.exceptions.CapacidadeIncoerenteException;
+import projeto.exceptions.EmbarqueIgualChegadaException;
+import projeto.exceptions.OrigemIgualDestinoException;
 import projeto.models.Voo.Voo;
 import projeto.models.Voo.VooInternacional;
 import projeto.models.Voo.VooNacional;
@@ -30,10 +33,15 @@ public class VooService {
         vooDAO.criar(novoVoo);
     }
     
-    private void validarRegrasDeNegocio(VooDados dados) throws Exception { //aqui acontece os throws 
-        if(dados.origem().equals(dados.destino())){ //exemplo de uma verifação
-            throw new Exception("Exemplo"); //trhow da exceção, depois do trhow aqui você faz o catch (nesse caso no CadastroVooController) com o aviso do erro
-        }
+    private void validarRegrasDeNegocio(VooDados dados) throws Exception {
+       if(dados.origem().equals(dados.destino())) { 
+           throw new OrigemIgualDestinoException("O endereço de origem e de destino são iguais");
+       }
+       if(dados.horaEmbarque().equals(dados.horaChegada())) {
+    	   throw new EmbarqueIgualChegadaException("O horário de embarque e de destino são iguais");
+       }
+       if(Integer.parseInt(dados.quantidade()) <= 0) {
+    	   throw new CapacidadeIncoerenteException("A capacidade do voo é incorente"); 
+       }
     }
-
 }

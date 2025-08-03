@@ -14,7 +14,7 @@ public class ReservaService {
         reservaDAO.criar(dados.toModel());
     }
 
-    private void validarRegrasDeNegocio(ReservaDados dados){
+    private void validarRegrasDeNegocio(ReservaDados dados) {
 
     }
 }
