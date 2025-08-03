@@ -86,9 +86,9 @@ public class RepositorioVoos {
 	public List<Voo> findAll() throws ListaVaziaException {
 		List<Voo> lista = this.getVoos();
 		
-		if (lista.isEmpty()) {
-			throw new ListaVaziaException("A lista pedida está vazia");
-		}
+		// if (lista.isEmpty()) {
+		// 	throw new ListaVaziaException("A lista pedida está vazia");
+		// } //o throw será em ReservaService e não aqui
 
 		return new ArrayList<>(lista);
 	}
